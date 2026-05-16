@@ -1,0 +1,47 @@
+.main-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 15%;
+  z-index: 10;
+}
+
+.menu-title {
+  font-size: 4rem;
+  color: var(--cyber-dark);
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.menu-title .subtitle {
+  font-size: 1.5rem;
+  color: var(--cyber-gray);
+  display: block;
+  font-weight: 400;
+  letter-spacing: 8px;
+}
+
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.menu-line {
+  width: 2px;
+  height: 150px;
+  background-color: var(--cyber-primary);
+  position: absolute;
+  left: calc(15% - 40px);
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}

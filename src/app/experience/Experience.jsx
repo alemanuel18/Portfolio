@@ -9,7 +9,7 @@ export default function Experience() {
     useEffect(() => {
         queryCyberLifeDB('experience').then((result) => {
             setData(result);
-            setLoading(false); // Apaga la animación de carga
+            setLoading(false);
         });
     }, []);
 

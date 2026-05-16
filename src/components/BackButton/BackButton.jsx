@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import { useCyber } from '../../context/CyberContext';
 import './BackButton.css';
@@ -6,10 +7,15 @@ import './BackButton.css';
 export default function BackButton({ onClick }) {
     const { playHover, playOutOption } = useCyberSound();
     const { t } = useCyber();
+    const navigate = useNavigate();
 
     const handleClick = () => {
         playOutOption();
-        if (onClick) onClick();
+        if (onClick) {
+            onClick();
+        } else {
+            navigate(-1);
+        }
     };
 
     return (

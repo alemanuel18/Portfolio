@@ -1,0 +1,45 @@
+.back-button-container {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.back-icon {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--cyber-dark);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.back-icon span {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.back-text {
+  font-family: var(--font-cyber);
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyber-dark);
+  transition: color 0.3s ease;
+}
+
+.back-button-container:hover .back-icon {
+  border-color: var(--cyber-primary);
+  box-shadow: 0 0 10px var(--cyber-primary-glow);
+  color: var(--cyber-primary);
+}
+
+.back-button-container:hover .back-text {
+  color: var(--cyber-primary);
+}

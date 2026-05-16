@@ -8,7 +8,6 @@ export default function CyberBackground() {
         const ctx = canvas.getContext('2d');
         let animationFrameId;
 
-        // Configurar tamaño completo
         const resizeCanvas = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -16,7 +15,6 @@ export default function CyberBackground() {
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        // Aquí creas tu lógica de partículas (luces desenfocadas / polvo)
         const particles = Array.from({ length: 30 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
@@ -28,15 +26,13 @@ export default function CyberBackground() {
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Dibujar partículas con efecto blur de CyberLife
             particles.forEach(p => {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(180, 220, 255, ${p.opacity})`;
-                ctx.filter = 'blur(8px)'; // Desenfoque cinematográfico
+                ctx.filter = 'blur(8px)';
                 ctx.fill();
 
-                // Mover hacia arriba lentamente
                 p.y += p.speedY;
                 if (p.y < -20) p.y = canvas.height + 20;
             });

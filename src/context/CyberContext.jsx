@@ -22,8 +22,28 @@ export function CyberProvider({ children }) {
 
     const t = translations[lang]; // Atajo para obtener los textos activos
 
+    // Simulación de carga de datos desde CyberLife Servers
+    const fetchCyberData = async (key) => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                // mock data
+                const mockData = {
+                    projects: [
+                        { id: 1, title: 'Project Eden', tech: 'React, Node', desc: 'A cybernetic garden' },
+                        { id: 2, title: 'Kamski Protocol', tech: 'Python, AI', desc: 'Emergency override system' }
+                    ],
+                    experience: [
+                        { id: 1, role: 'Junior Dev', year: '2022' },
+                        { id: 2, role: 'Senior Android', year: '2038' }
+                    ]
+                };
+                resolve(mockData[key] || []);
+            }, 1200); // 1.2s delay as requested
+        });
+    };
+
     return (
-        <CyberContext.Provider value={{ lang, setLang, volume, setVolume, t }}>
+        <CyberContext.Provider value={{ lang, setLang, volume, setVolume, t, fetchCyberData }}>
             {children}
         </CyberContext.Provider>
     );

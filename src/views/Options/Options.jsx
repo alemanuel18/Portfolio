@@ -5,7 +5,7 @@ import { useCyberSound } from '../../hooks/useCyberSound';
 import './Options.css';
 import { useEffect } from 'react';
 
-export default function Options({ backToMenu }) {
+export default function Options() {
     const { lang, setLang, volume, setVolume, t } = useCyber();
     const { playNavigare, playHover, playInOption } = useCyberSound();
 
@@ -76,7 +76,7 @@ export default function Options({ backToMenu }) {
                 </div>
             </div>
 
-            <BackButton onClick={backToMenu} />
+            <BackButton />
         </motion.div>
     );
 }

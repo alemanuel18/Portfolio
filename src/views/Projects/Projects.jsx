@@ -6,7 +6,7 @@ import { useCyber } from '../../context/CyberContext';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Projects.css';
 
-export default function Projects({ backToMenu }) {
+export default function Projects() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [selectedProject, setSelectedProject] = useState(null);
@@ -86,7 +86,7 @@ export default function Projects({ backToMenu }) {
                 </AnimatePresence>
             </div>
 
-            <BackButton onClick={backToMenu} />
+            <BackButton />
         </motion.div>
     );
 }

@@ -1,12 +1,12 @@
 :root {
-  /* CyberLife Colors */
-  --cyber-primary: #00a8ff;
-  --cyber-primary-glow: rgba(0, 168, 255, 0.4);
+  /* CyberLife Light Colors */
+  --cyber-primary: #0088cc; /* Un azul un poco más oscuro para que se vea en fondo claro */
+  --cyber-primary-glow: rgba(0, 136, 204, 0.3);
   --cyber-dark: #1a222d;
-  --cyber-white: #f5f7fa;
+  --cyber-white: #ffffff;
   --cyber-gray: #8292a5;
-  --cyber-border: rgba(255, 255, 255, 0.15);
-  --cyber-bg: #e6eaf0; /* Light background for clinical feel */
+  --cyber-border: rgba(0, 0, 0, 0.1);
+  --cyber-bg: #eef5fb; /* Very light clinical blue/white */
 
   /* Fonts */
   --font-cyber: 'Jura', sans-serif;

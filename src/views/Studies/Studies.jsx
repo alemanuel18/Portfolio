@@ -4,9 +4,9 @@ import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import { useCyber } from '../../context/CyberContext';
 import { useCyberSound } from '../../hooks/useCyberSound';
-import './Experience.css';
+import './Studies.css';
 
-export default function Experience() {
+export default function Studies() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const { fetchCyberData } = useCyber();
@@ -14,7 +14,7 @@ export default function Experience() {
 
     useEffect(() => {
         playNavigare();
-        fetchCyberData('experience').then(res => {
+        fetchCyberData('studies').then(res => {
             setData(res);
             setLoading(false);
         });
@@ -30,26 +30,26 @@ export default function Experience() {
 
     return (
         <motion.div
-            className="experience-view"
+            className="studies-view"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
         >
-            <h1 className="experience-title">CHAPTERS</h1>
+            <h1 className="studies-title">ESTUDIOS</h1>
 
-            <div className="timeline-container">
-                <div className="timeline-line"></div>
+            <div className="studies-timeline-container">
+                <div className="studies-line"></div>
                 {data.map((item, index) => (
                     <motion.div 
                         key={item.id} 
-                        className="timeline-node"
+                        className="studies-node"
                         onMouseEnter={playHover}
                         initial={{ opacity: 0, y: 50 }}
                         animate={{ opacity: 1, y: 0, transition: { delay: index * 0.2 } }}
                     >
-                        <div className="timeline-date">{item.year}</div>
-                        <div className="timeline-role">{item.role}</div>
+                        <div className="studies-date">{item.year}</div>
+                        <div className="studies-degree">{item.degree}</div>
                     </motion.div>
                 ))}
             </div>

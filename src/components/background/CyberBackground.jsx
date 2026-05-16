@@ -15,28 +15,28 @@ export default function CyberBackground() {
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        // Partículas tipo "dust" / "bokeh" (lentas, desenfocadas, tonos fríos)
+        // Partículas tipo "dust" / "bokeh" (lentas, desenfocadas, tonos fríos para fondo claro)
         const particles = Array.from({ length: 40 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
             radius: Math.random() * 20 + 5, // Tamaños variados para bokeh
             speedX: (Math.random() - 0.5) * 0.2, // Movimiento lateral muy lento
             speedY: -(Math.random() * 0.3 + 0.05), // Movimiento ascendente muy lento
-            opacity: Math.random() * 0.4 + 0.1
+            opacity: Math.random() * 0.2 + 0.05 // Reducida la opacidad para que sean sutiles en fondo claro
         }));
 
         const animate = () => {
-            // Fondo un poco más claro para estilo clínico o mantener oscuro según diseño
+            // Fondo un poco más claro para estilo clínico
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             particles.forEach(p => {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                 
-                // Gradiente radial para simular desenfoque/bokeh
+                // Gradiente radial para simular desenfoque/bokeh oscuro sobre fondo claro
                 const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
-                gradient.addColorStop(0, `rgba(255, 255, 255, ${p.opacity})`);
-                gradient.addColorStop(1, `rgba(180, 220, 255, 0)`);
+                gradient.addColorStop(0, `rgba(0, 136, 204, ${p.opacity})`);
+                gradient.addColorStop(1, `rgba(0, 136, 204, 0)`);
                 
                 ctx.fillStyle = gradient;
                 ctx.fill();
@@ -69,8 +69,8 @@ export default function CyberBackground() {
                 top: 0, 
                 left: 0, 
                 zIndex: -1, 
-                // Fondo clínico oscuro con gradiente
-                background: 'linear-gradient(135deg, #10151c 0%, #1a222d 100%)' 
+                // Fondo clínico muy claro
+                background: 'linear-gradient(135deg, #ffffff 0%, #e6f0fa 100%)' 
             }}
         />
     );

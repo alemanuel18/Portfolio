@@ -1,111 +1,105 @@
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  /* CyberLife Colors */
+  --cyber-primary: #00a8ff;
+  --cyber-primary-glow: rgba(0, 168, 255, 0.4);
+  --cyber-dark: #1a222d;
+  --cyber-white: #f5f7fa;
+  --cyber-gray: #8292a5;
+  --cyber-border: rgba(255, 255, 255, 0.15);
+  --cyber-bg: #e6eaf0; /* Light background for clinical feel */
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+  /* Fonts */
+  --font-cyber: 'Jura', sans-serif;
 }
 
 body {
   margin: 0;
+  padding: 0;
+  background-color: var(--cyber-bg);
+  color: var(--cyber-dark);
+  font-family: var(--font-cyber);
+  overflow: hidden; /* Evitar scroll global, manejar en vistas */
+  user-select: none;
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
+/* Tipografía global */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   margin: 0;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+/* Efecto de borde brillante (Glow) */
+.cyber-glow {
+  box-shadow: 0 0 10px var(--cyber-primary-glow), inset 0 0 10px var(--cyber-primary-glow);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+/* Utilidades para formas trapezoidales y diagonales */
+.skew-container {
+  transform: skewX(-10deg);
+}
+
+.skew-content {
+  transform: skewX(10deg); /* Para enderezar el texto dentro de un contenedor inclinado */
+}
+
+.cyber-clip {
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+}
+
+.cyber-clip-alt {
+  clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%);
+}
+
+/* Animaciones */
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; text-shadow: 0 0 8px var(--cyber-white); }
+  100% { opacity: 0.8; }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scanline-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  background: linear-gradient(to bottom, transparent, rgba(0, 168, 255, 0.05), transparent);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Custom Scrollbar minimalista */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cyber-gray);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyber-primary);
 }

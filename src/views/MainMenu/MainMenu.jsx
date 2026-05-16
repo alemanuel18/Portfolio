@@ -32,8 +32,6 @@ export default function MainMenu() {
                 <span className="subtitle">BECOME DEVELOPER</span>
             </motion.div>
 
-            <div className="menu-line"></div>
-
             <div className="menu-options">
                 <motion.div variants={itemVariants}>
                     <CyberButton onClick={() => navigate('/about')}>{t.menu.story}</CyberButton>

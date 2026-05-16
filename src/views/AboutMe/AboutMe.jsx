@@ -4,7 +4,7 @@ import './AboutMe.css';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import { useEffect } from 'react';
 
-export default function AboutMe({ backToMenu }) {
+export default function AboutMe() {
     const { playNavigare } = useCyberSound();
 
     useEffect(() => {
@@ -64,7 +64,7 @@ export default function AboutMe({ backToMenu }) {
                 </motion.div>
             </div>
 
-            <BackButton onClick={backToMenu} />
+            <BackButton />
         </motion.div>
     );
 }

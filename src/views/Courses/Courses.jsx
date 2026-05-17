@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import MagazineLayout from '../../components/MagazineLayout/MagazineLayout';
-import CyberImage from '../../components/CyberImage/CyberImage';
+import CyberButton from '../../components/CyberButton/CyberButton';
 import { useCyber } from '../../context/CyberContext';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Courses.css';
@@ -51,13 +51,15 @@ export default function Courses() {
                         <div className="detail-platform">PLATAFORMA: {item.platform}</div>
                         <p className="detail-desc">{item.desc}</p>
 
-                        {/* Imagen del diploma / certificado */}
-                        {item.img && (
-                            <CyberImage
-                                src={item.img}
-                                alt={`Diploma de ${item.title}`}
-                                className="diploma-img"
-                            />
+                        {/* Botón al diploma/certificado */}
+                        {item.link && (
+                            <div className="course-detail-link">
+                                <CyberButton
+                                    onClick={() => window.open(item.link, '_blank', 'noopener,noreferrer')}
+                                >
+                                    [ VER DIPLOMA ]
+                                </CyberButton>
+                            </div>
                         )}
                     </div>
                 )}

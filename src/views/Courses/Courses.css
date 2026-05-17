@@ -37,10 +37,7 @@
   margin: 0;
 }
 
-/* Imagen del diploma con clip-path para dar forma trapezoidal */
-.diploma-img {
-  width: 100%;
-  height: 220px;
-  margin-top: 6px;
-  clip-path: polygon(2% 0, 100% 0, 98% 100%, 0% 100%);
+/* Contenedor del botón al diploma */
+.course-detail-link {
+  margin-top: 8px;
 }

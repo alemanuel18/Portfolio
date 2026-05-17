@@ -6,7 +6,7 @@ export function useCyberSound() {
 
     const hoverAudioRef = useRef(new Audio('/audio/interaccion/hobber/hobber.wav'));
     const inOptionAudioRef = useRef(new Audio('/audio/interaccion/inOption/inOption.wav'));
-    const navigareAudioRef = useRef(new Audio('/audio/interaccion/navigare/navigare.wav'));
+    const navigareAudioRef = useRef(new Audio('/audio/interaccion/navigate/navigate.wav'));
     const openPortfolioAudioRef = useRef(new Audio('/audio/interaccion/openPortfolio/openPortfolio.wav'));
     const outOptionAudioRef = useRef(new Audio('/audio/interaccion/outOption/outOption.wav'));
 

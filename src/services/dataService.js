@@ -29,6 +29,6 @@ export const fetchCyberData = async (key) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(mockData[key] || []);
-        }, 1200); // 1.2s delay as requested
+        }, 2000); // 1.2s delay as requested
     });
 };

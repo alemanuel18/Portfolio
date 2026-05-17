@@ -8,12 +8,12 @@ const mockData = {
         { id: 2, title: 'Kamski Protocol', tech: 'Python, AI, TensorFlow', desc: 'Emergency override system designed by Elijah Kamski.' }
     ],
     experience: [
-        { id: 1, role: 'Junior Dev', year: '2022', img: '/image/experience/exp1.png' },
-        { id: 2, role: 'Senior Android', year: '2038', img: '/image/studies/study2.png' }
+        { id: 1, role: 'Junior Dev', company: 'Mi Empresa', year: '2022 - 2023', img: '/image/experience/exp1.png', desc: 'Desarrollo de interfaces web con React y Node.js. Participación en sprints ágiles y code reviews.' },
+        { id: 2, role: 'Senior Android', company: 'CyberLife Corp.', year: '2038 - Presente', img: '/image/studies/study2.png', desc: 'Diseño y construcción de androides con IA avanzada. Especialización en empatía artificial.' }
     ],
     studies: [
-        { id: 1, degree: 'Computer Science', year: '2020 - 2024', img: '/image/studies/study1.png' },
-        { id: 2, degree: 'Cybernetics Specialization', year: '2025', img: '/image/studies/study2.png' }
+        { id: 1, degree: 'Computer Science', institution: 'Universidad de Guatemala', year: '2020 - 2024', img: '/image/studies/study1.png', desc: 'Carrera de Ciencias de la Computación. Énfasis en algoritmos, estructuras de datos y desarrollo de software.' },
+        { id: 2, degree: 'Cybernetics Specialization', institution: 'CyberLife Academy', year: '2025', img: '/image/studies/study2.png', desc: 'Especialización en sistemas cibernéticos, redes neuronales y diseño de experiencias inmersivas.' }
     ],
     courses: [
         { id: 1, title: 'Advanced UI/UX', platform: 'CyberLife Academy', desc: 'Design of empathetic interfaces.', img: 'https://via.placeholder.com/400x300?text=UI/UX+Diploma' },

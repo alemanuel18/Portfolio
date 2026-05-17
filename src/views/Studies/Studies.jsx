@@ -39,16 +39,8 @@ export default function Studies() {
         >
             <h1 className="studies-title">ESTUDIOS</h1>
 
-            <CyberTimeline
-                items={data}
-                renderCard={(item) => (
-                    <>
-                        <div className="timeline-date">{item.year}</div>
-                        <div className="timeline-degree">{item.degree}</div>
-                        {item.institution && <div className="timeline-institution">{item.institution}</div>}
-                    </>
-                )}
-            />
+            {/* labelField='degree', subField='institution' para el modelo de estudios */}
+            <CyberTimeline items={data} labelField="degree" subField="institution" />
 
             <BackButton />
         </motion.div>

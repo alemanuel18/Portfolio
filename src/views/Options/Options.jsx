@@ -2,12 +2,13 @@ import { motion } from 'framer-motion';
 import BackButton from '../../components/BackButton/BackButton';
 import { useCyber } from '../../context/CyberContext';
 import { useCyberSound } from '../../hooks/useCyberSound';
+import CyberButton from '../../components/CyberButton/CyberButton';
 import './Options.css';
 import { useEffect } from 'react';
 
 export default function Options() {
     const { lang, setLang, volume, setVolume, t } = useCyber();
-    const { playNavigare, playHover, playInOption } = useCyberSound();
+    const { playNavigare, playInOption } = useCyberSound();
 
     useEffect(() => {
         playNavigare();
@@ -50,7 +51,7 @@ export default function Options() {
                         step="0.1"
                         value={volume}
                         onChange={handleVolumeChange}
-                        onMouseUp={() => playInOption()} // Test sound when releasing slider
+                        onMouseUp={() => playInOption()}
                         className="cyber-slider"
                     />
                 </div>
@@ -58,20 +59,18 @@ export default function Options() {
                 <div className="option-group">
                     <span className="option-label">{t.options.lang}</span>
                     <div className="lang-toggle">
-                        <button
-                            className={`lang-btn ${lang === 'es' ? 'active' : ''}`}
+                        <CyberButton
+                            active={lang === 'es'}
                             onClick={() => handleLangChange('es')}
-                            onMouseEnter={playHover}
                         >
                             ES
-                        </button>
-                        <button
-                            className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
+                        </CyberButton>
+                        <CyberButton
+                            active={lang === 'en'}
                             onClick={() => handleLangChange('en')}
-                            onMouseEnter={playHover}
                         >
                             EN
-                        </button>
+                        </CyberButton>
                     </div>
                 </div>
             </div>

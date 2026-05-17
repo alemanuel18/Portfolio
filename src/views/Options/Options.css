@@ -69,22 +69,5 @@
 .lang-toggle {
   display: flex;
   gap: 20px;
-}
-
-.lang-btn {
-  padding: 10px 20px;
-  background: transparent;
-  border: 1px solid var(--cyber-gray);
-  color: var(--cyber-gray);
-  cursor: pointer;
-  font-family: var(--font-cyber);
-  font-size: 1rem;
-  transition: all 0.3s ease;
-}
-
-.lang-btn.active {
-  background: var(--cyber-primary);
-  color: var(--cyber-white);
-  border-color: var(--cyber-primary);
-  box-shadow: 0 0 10px var(--cyber-primary-glow);
+  align-items: center;
 }

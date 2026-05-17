@@ -11,25 +11,7 @@
   box-sizing: border-box;
 }
 
-/* Contenido del panel izquierdo (gráfico diagnóstico) */
-.tech-graphic {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  font-family: monospace;
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  color: rgba(255, 255, 255, 0.7);
-  z-index: 3;
-  position: relative;
-}
-
-.tech-graphic-icon {
-  font-size: 3rem;
-}
-
-/* ─── Panel derecho (via CyberSplitPanel .csp-right) ─── */
+/* ─── Panel derecho ───────────────────────────── */
 .tech-title {
   font-size: 3rem;
   color: var(--cyber-dark);
@@ -39,23 +21,99 @@
   display: inline-block;
 }
 
+/* Lista de tecnologías */
 .tech-meta {
   font-family: monospace;
   font-size: 0.9rem;
   color: var(--cyber-gray);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 4px;
+  overflow-y: auto;
+  max-height: 65vh;
+  padding-right: 4px;
 }
 
+/* Ocultar scrollbar pero mantener scroll */
+.tech-meta::-webkit-scrollbar { width: 3px; }
+.tech-meta::-webkit-scrollbar-thumb { background: rgba(0, 136, 204, 0.3); }
+
+/* ─── Ítem de tecnología ─────────────────────── */
 .tech-item {
+  border-bottom: 1px solid var(--cyber-border);
+  padding: 10px 6px 10px 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border-left: 2px solid transparent;
+}
+
+.tech-item:hover {
+  background: rgba(0, 136, 204, 0.05);
+  border-left-color: var(--cyber-primary);
+}
+
+.tech-item--open {
+  background: rgba(0, 136, 204, 0.07);
+  border-left-color: var(--cyber-primary);
+}
+
+/* Cabecera del ítem */
+.tech-item-header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid var(--cyber-border);
-  padding-bottom: 6px;
-  font-weight: 600;
+  align-items: center;
+  gap: 12px;
+}
+
+.tech-item-name {
+  font-weight: 700;
+  color: var(--cyber-dark);
+  font-size: 0.92rem;
+}
+
+.tech-item-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 .tech-status {
   color: var(--cyber-primary);
+  font-size: 0.78rem;
+}
+
+.tech-item-chevron {
+  font-size: 0.65rem;
+  color: var(--cyber-gray);
+  opacity: 0.6;
+}
+
+/* ─── Detalle expandible ──────────────────────── */
+.tech-item-detail {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 10px;
+}
+
+.tech-detail-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.tech-detail-label {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--cyber-primary);
+  opacity: 0.8;
+}
+
+.tech-detail-block p {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: var(--cyber-gray);
 }

@@ -107,10 +107,66 @@ const mockData = {
         { id: 5, title: 'Introducción a la Terminal y Línea de Comandos', platform: 'Platzi', desc: 'Aprende a utilizar la terminal y la línea de comandos para navegar tu sistema operativo, manipular archivos y directorios, comprender permisos y procesos, y usar herramientas como grep y curl.', link: 'https://platzi.com/p/alemanuelj17/curso/12040-course/diploma/detalle/' },
     ],
     technologies: [
-        { id: 1, name: 'React (Vite)', level: 'OPTIMAL' },
-        { id: 2, name: 'TypeScript', level: 'STABLE' },
-        { id: 3, name: 'Node.js', level: 'OPTIMAL' },
-        { id: 4, name: 'PostgreSQL', level: 'NOMINAL' }
+        {
+            id: 1, name: 'React (Vite)', level: 'OPTIMAL',
+            why: 'Ecosistema maduro, componentes reutilizables y un flujo de datos predecible que agiliza el desarrollo de interfaces complejas.',
+            how: 'Base de todos mis proyectos frontend: Portafolio, Swap, Pokedex, Snake y la Calculadora.'
+        },
+        {
+            id: 2, name: 'TypeScript', level: 'STABLE',
+            why: 'El tipado estático reduce errores en tiempo de desarrollo y hace el código más legible para equipos.',
+            how: 'Utilizado en Swap (frontend y backend) y en la Calculadora de laboratorio.'
+        },
+        {
+            id: 3, name: 'Next.js', level: 'STABLE',
+            why: 'SSR y enrutamiento de archivos integrado, ideal para apps con SEO y carga rápida.',
+            how: 'Frontend principal del proyecto Swap.'
+        },
+        {
+            id: 4, name: 'Node.js', level: 'OPTIMAL',
+            why: 'Permite usar JavaScript en el servidor, unificando el stack y aprovechando el mismo ecosistema npm.',
+            how: 'Backend del proyecto Swap y el Sistema de Inventario y Ventas.'
+        },
+        {
+            id: 5, name: 'PostgreSQL', level: 'NOMINAL',
+            why: 'Base de datos relacional robusta con soporte ACID y consultas complejas vía SQL.',
+            how: 'Base de datos principal en Swap, Tracked y el Sistema de Inventario.'
+        },
+        {
+            id: 6, name: 'MySQL', level: 'NOMINAL',
+            why: 'Ampliamente usado en entornos académicos y gran compatibilidad con herramientas ORM.',
+            how: 'Usado en el Sistema de Inventario y Ventas como motor relacional.'
+        },
+        {
+            id: 7, name: 'Python', level: 'STABLE',
+            why: 'Sintaxis clara y el ecosistema de IA/ML más completo disponible actualmente.',
+            how: 'Backend del Sistema de Recomendación de Profesores con FastAPI y Neo4j.'
+        },
+        {
+            id: 8, name: 'Go', level: 'NOMINAL',
+            why: 'Rendimiento cercano a C con concurrencia nativa (goroutines), ideal para APIs de alto tráfico.',
+            how: 'Backend del proyecto Tracked para la gestión de series vistas.'
+        },
+        {
+            id: 9, name: 'Docker', level: 'STABLE',
+            why: 'Garantiza que el entorno de desarrollo sea idéntico al de producción, eliminando el "funciona en mi máquina".',
+            how: 'Todos mis proyectos tienen un docker-compose.yml para levantar el stack completo con un solo comando.'
+        },
+        {
+            id: 10, name: 'Git', level: 'OPTIMAL',
+            why: 'Control de versiones distribuido esencial para colaboración en equipo y gestión del historial de cambios.',
+            how: 'Flujo de trabajo con ramas por feature en todos los proyectos colaborativos.'
+        },
+        {
+            id: 11, name: 'HTML', level: 'OPTIMAL',
+            why: 'Base fundamental de cualquier interfaz web; conocerlo a fondo es esencial para escribir markup semántico y accesible.',
+            how: 'Utilizado directamente en el proyecto Tracked (frontend vanilla).'
+        },
+        {
+            id: 12, name: 'CSS', level: 'OPTIMAL',
+            why: 'CSS moderno (variables, clip-path, grid, animaciones) elimina la necesidad de frameworks para la mayoría de diseños.',
+            how: 'Estilos de este portafolio, Tracked y la mayoría de proyectos personales.'
+        },
     ]
 };
 

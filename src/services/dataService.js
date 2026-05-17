@@ -138,32 +138,27 @@ const mockData = {
             how: 'Usado en el Sistema de Inventario y Ventas como motor relacional.'
         },
         {
-            id: 7, name: 'Python', level: 'STABLE',
-            why: 'Sintaxis clara y el ecosistema de IA/ML más completo disponible actualmente.',
-            how: 'Backend del Sistema de Recomendación de Profesores con FastAPI y Neo4j.'
-        },
-        {
-            id: 8, name: 'Go', level: 'NOMINAL',
+            id: 7, name: 'Go', level: 'NOMINAL',
             why: 'Rendimiento cercano a C con concurrencia nativa (goroutines), ideal para APIs de alto tráfico.',
             how: 'Backend del proyecto Tracked para la gestión de series vistas.'
         },
         {
-            id: 9, name: 'Docker', level: 'STABLE',
+            id: 8, name: 'Docker', level: 'STABLE',
             why: 'Garantiza que el entorno de desarrollo sea idéntico al de producción, eliminando el "funciona en mi máquina".',
             how: 'Todos mis proyectos tienen un docker-compose.yml para levantar el stack completo con un solo comando.'
         },
         {
-            id: 10, name: 'Git', level: 'OPTIMAL',
+            id: 9, name: 'Git', level: 'OPTIMAL',
             why: 'Control de versiones distribuido esencial para colaboración en equipo y gestión del historial de cambios.',
             how: 'Flujo de trabajo con ramas por feature en todos los proyectos colaborativos.'
         },
         {
-            id: 11, name: 'HTML', level: 'OPTIMAL',
+            id: 10, name: 'HTML', level: 'OPTIMAL',
             why: 'Base fundamental de cualquier interfaz web; conocerlo a fondo es esencial para escribir markup semántico y accesible.',
             how: 'Utilizado directamente en el proyecto Tracked (frontend vanilla).'
         },
         {
-            id: 12, name: 'CSS', level: 'OPTIMAL',
+            id: 11, name: 'CSS', level: 'OPTIMAL',
             why: 'CSS moderno (variables, clip-path, grid, animaciones) elimina la necesidad de frameworks para la mayoría de diseños.',
             how: 'Estilos de este portafolio, Tracked y la mayoría de proyectos personales.'
         },

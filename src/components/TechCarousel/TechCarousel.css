@@ -34,7 +34,7 @@
 }
 
 .tc-icon {
-  font-size: 2rem;
+  font-size: 4rem;
   color: rgba(255, 255, 255, 0.65);
   transition: color 0.3s ease;
   display: block;
@@ -42,44 +42,5 @@
 
 /* Slot activo (centro del carrusel) */
 .tc-slot--active .tc-icon {
-  color: rgba(100, 200, 255, 0.95);
-  filter: drop-shadow(0 0 8px rgba(36, 140, 220, 0.7));
-}
-
-.tc-name {
-  font-family: monospace;
-  font-size: 0.72rem;
-  letter-spacing: 1.5px;
-  color: rgba(180, 220, 255, 0.9);
-  white-space: nowrap;
-}
-
-/* Indicadores de posición (puntos) */
-.tech-carousel-dots {
-  display: flex;
-  flex-direction: row;
-  gap: 6px;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 120px;
-}
-
-.tc-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.tc-dot--active {
-  background: rgba(80, 180, 255, 0.9);
-  transform: scale(1.4);
-}
-
-.tc-dot:hover {
-  background: rgba(255, 255, 255, 0.55);
+  color: var(--cyber-white);
 }

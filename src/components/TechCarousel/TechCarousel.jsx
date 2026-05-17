@@ -21,8 +21,6 @@ export const TECH_ICONS = {
 };
 
 /**
- * Carrusel vertical de íconos de tecnologías.
- * Auto-rota cada `interval` ms. El ícono central queda iluminado.
  *
  * @param {Object[]} items   - Arreglo de tecnologías (deben tener `name`)
  * @param {number}  interval - Milisegundos entre rotaciones (default 1800)
@@ -49,7 +47,6 @@ export default function TechCarousel({ items = [], interval = 1800, visible = 5 
 
     return (
         <div className="tech-carousel">
-            <div className="tech-carousel-label">[ TECH STACK ]</div>
 
             <div className="tech-carousel-track">
                 {indices.map((idx, pos) => {
@@ -68,31 +65,10 @@ export default function TechCarousel({ items = [], interval = 1800, visible = 5 
                             transition={{ duration: 0.4, ease: 'easeInOut' }}
                         >
                             <Icon className="tc-icon" />
-                            {isCenter && (
-                                <motion.span
-                                    className="tc-name"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    {tech.name}
-                                </motion.span>
-                            )}
+
                         </motion.div>
                     );
                 })}
-            </div>
-
-            {/* Indicador de puntos */}
-            <div className="tech-carousel-dots">
-                {items.map((_, i) => (
-                    <button
-                        key={i}
-                        className={`tc-dot ${i === current ? 'tc-dot--active' : ''}`}
-                        onClick={() => setCurrent(i)}
-                    />
-                ))}
             </div>
         </div>
     );

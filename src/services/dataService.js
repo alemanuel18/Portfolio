@@ -1,19 +1,19 @@
 // Datos simulados de los servidores de CyberLife
 const mockData = {
     aboutme: [
-        { id: 1, name: 'ALEJANDRO JEREZ', developer: 'WEB FULL-STACK', status: 'JUNIOR', especialidad: 'FRONTEND & UI/UX', description: 'Desarrollador FULL-STACK, especializado en interfaces dinámicas y experiencias de usuario inmersivas. Especializado en React, HTML, CSS, JavaScript, TypeScript y diseño moderno.' }
+        { id: 1, name: 'ALEJANDRO JEREZ', developer: 'WEB FULL-STACK', status: 'JUNIOR', especialidad: 'FRONTEND & UI/UX', description: 'Desarrollador FULL-STACK, especializado en interfaces dinámicas y experiencias de usuario inmersivas. Especializado en React, HTML, CSS, JavaScript, TypeScript y diseño moderno.', img: '/image/aboutme/about0.webp' }
     ],
     projects: [
         { id: 1, title: 'Project Eden', tech: 'React, Node, MongoDB', desc: 'A cybernetic garden for androids.' },
         { id: 2, title: 'Kamski Protocol', tech: 'Python, AI, TensorFlow', desc: 'Emergency override system designed by Elijah Kamski.' }
     ],
     experience: [
-        { id: 1, role: 'Junior Dev', year: '2022' },
-        { id: 2, role: 'Senior Android', year: '2038' }
+        { id: 1, role: 'Junior Dev', year: '2022', img: '/image/experience/exp1.png' },
+        { id: 2, role: 'Senior Android', year: '2038', img: '/image/studies/study2.png' }
     ],
     studies: [
-        { id: 1, degree: 'Computer Science', year: '2020 - 2024' },
-        { id: 2, degree: 'Cybernetics Specialization', year: '2025' }
+        { id: 1, degree: 'Computer Science', year: '2020 - 2024', img: '/image/studies/study1.png' },
+        { id: 2, degree: 'Cybernetics Specialization', year: '2025', img: '/image/studies/study2.png' }
     ],
     courses: [
         { id: 1, title: 'Advanced UI/UX', platform: 'CyberLife Academy', desc: 'Design of empathetic interfaces.', img: 'https://via.placeholder.com/400x300?text=UI/UX+Diploma' },

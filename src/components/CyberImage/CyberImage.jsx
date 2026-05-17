@@ -16,8 +16,8 @@ export default function CyberImage({ src, alt, className = '', interactive = fal
     const [hovered, setHovered] = useState(false);
 
     // Triángulos SVG — patrón sutil sobre la imagen
-    const COLS = 6;
-    const ROWS = 4;
+    const COLS = 4;
+    const ROWS = 5;
     const W = 100; // viewBox unitless (se estira con preserveAspectRatio="none")
     const H = 100;
     const cw = W / COLS;

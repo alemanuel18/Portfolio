@@ -6,6 +6,7 @@ import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import CyberButton from '../../components/CyberButton/CyberButton';
 import CyberSplitPanel from '../../components/CyberSplitPanel/CyberSplitPanel';
+import CyberImage from '../../components/CyberImage/CyberImage';
 import { useCyber } from '../../context/CyberContext';
 import './AboutMe.css';
 
@@ -23,8 +24,8 @@ export default function AboutMe() {
 
     const contacts = [
         { label: 'LinkedIn', icon: <FaLinkedin size={20} />, href: 'https://www.linkedin.com/in/alejandro-manuel-jerez-melgar-735836289/' },
-        { label: 'Gmail',    icon: <SiGmail size={20} />,    href: 'mailto:alemanuelj5@gmail.com?subject=Contacto desde portfolio&body=Hola Alejandro,' },
-        { label: 'GitHub',   icon: <FaGithub size={20} />,   href: 'https://github.com/alemanuel18' }
+        { label: 'Gmail', icon: <SiGmail size={20} />, href: 'mailto:alemanuelj5@gmail.com?subject=Contacto desde portfolio&body=Hola Alejandro,' },
+        { label: 'GitHub', icon: <FaGithub size={20} />, href: 'https://github.com/alemanuel18' }
     ];
 
     const containerVariants = {
@@ -47,7 +48,11 @@ export default function AboutMe() {
                 leftClipPath="polygon(0 0, 100% 0, 85% 100%, 0 100%)"
                 leftContent={
                     <div className="profile-placeholder">
-                        [ IMAGE SIGNAL LOST ]
+                        <CyberImage
+                            src={data.img}
+                            alt={data.name}
+                            className="profile-image"
+                        />
                     </div>
                 }
                 rightContent={

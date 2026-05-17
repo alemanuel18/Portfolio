@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import CyberTimeline from '../../components/CyberTimeline/CyberTimeline';
+import CyberImage from '../../components/CyberImage/CyberImage';
 import { useCyber } from '../../context/CyberContext';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Experience.css';
@@ -43,6 +44,14 @@ export default function Experience() {
                 items={data}
                 renderCard={(item) => (
                     <>
+                        {item.img && (
+                            <CyberImage
+                                src={item.img}
+                                alt={item.role}
+                                className="timeline-node-img"
+                                interactive
+                            />
+                        )}
                         <div className="timeline-date">{item.year}</div>
                         <div className="timeline-role">{item.role}</div>
                         {item.company && <div className="timeline-company">{item.company}</div>}

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
+import CyberTimeline from '../../components/CyberTimeline/CyberTimeline';
 import { useCyber } from '../../context/CyberContext';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Studies.css';
@@ -10,7 +11,7 @@ export default function Studies() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const { fetchCyberData } = useCyber();
-    const { playNavigare, playHover } = useCyberSound();
+    const { playNavigare } = useCyberSound();
 
     useEffect(() => {
         playNavigare();
@@ -38,21 +39,16 @@ export default function Studies() {
         >
             <h1 className="studies-title">ESTUDIOS</h1>
 
-            <div className="studies-timeline-container">
-                <div className="studies-line"></div>
-                {data.map((item, index) => (
-                    <motion.div 
-                        key={item.id} 
-                        className="studies-node"
-                        onMouseEnter={playHover}
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0, transition: { delay: index * 0.2 } }}
-                    >
-                        <div className="studies-date">{item.year}</div>
-                        <div className="studies-degree">{item.degree}</div>
-                    </motion.div>
-                ))}
-            </div>
+            <CyberTimeline
+                items={data}
+                renderCard={(item) => (
+                    <>
+                        <div className="timeline-date">{item.year}</div>
+                        <div className="timeline-degree">{item.degree}</div>
+                        {item.institution && <div className="timeline-institution">{item.institution}</div>}
+                    </>
+                )}
+            />
 
             <BackButton />
         </motion.div>

@@ -1,0 +1,77 @@
+.cyber-timeline-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 60px 40px;
+  gap: 80px;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cyber-gray) transparent;
+}
+
+.cyber-timeline-container::-webkit-scrollbar {
+  height: 6px;
+}
+.cyber-timeline-container::-webkit-scrollbar-thumb {
+  background: var(--cyber-gray);
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
+/* Línea SVG de fondo */
+.timeline-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Nodo / tarjeta del timeline */
+.timeline-node {
+  position: relative;
+  min-width: 260px;
+  max-width: 300px;
+  background: var(--cyber-white);
+  color: var(--cyber-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 36px 24px 28px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0% 100%);
+  border-left: 3px solid var(--cyber-primary);
+  cursor: default;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  z-index: 1;
+}
+
+.timeline-node:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 40px rgba(0, 136, 204, 0.2);
+  background: var(--cyber-dark);
+  color: var(--cyber-white);
+}
+
+.timeline-node:hover .timeline-dot {
+  background: var(--cyber-white);
+}
+
+/* Punto inferior que "toca" la línea de tiempo */
+.timeline-dot {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cyber-primary);
+  border: 2px solid var(--cyber-white);
+  z-index: 2;
+}

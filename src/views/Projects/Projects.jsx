@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
+import MagazineLayout from '../../components/MagazineLayout/MagazineLayout';
 import { useCyber } from '../../context/CyberContext';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Projects.css';
@@ -9,9 +10,9 @@ import './Projects.css';
 export default function Projects() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
-    const [selectedProject, setSelectedProject] = useState(null);
+    const [selected, setSelected] = useState(null);
     const { fetchCyberData } = useCyber();
-    const { playNavigare, playHover, playInOption } = useCyberSound();
+    const { playNavigare } = useCyberSound();
 
     useEffect(() => {
         playNavigare();
@@ -20,11 +21,6 @@ export default function Projects() {
             setLoading(false);
         });
     }, []);
-
-    const handleSelect = (project) => {
-        playInOption();
-        setSelectedProject(project);
-    };
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -42,49 +38,30 @@ export default function Projects() {
             animate="visible"
             exit="exit"
         >
-            <div className="projects-left">
-                <h1 className="projects-title">MAGAZINES</h1>
-                <div className="magazines-grid">
-                    {data.map((item, index) => (
-                        <motion.div
-                            key={item.id}
-                            className={`magazine-card ${selectedProject?.id === item.id ? 'active' : ''}`}
-                            onMouseEnter={playHover}
-                            onClick={() => handleSelect(item)}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0, transition: { delay: index * 0.1 } }}
-                        >
-                            <span className="magazine-title">{item.title}</span>
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-
-            <div className="projects-right">
-                <AnimatePresence mode="wait">
-                    {selectedProject ? (
-                        <motion.div
-                            key={selectedProject.id}
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -50 }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <h2 className="detail-title">{selectedProject.title}</h2>
-                            <div className="detail-tech">STACK: {selectedProject.tech}</div>
-                            <div className="detail-desc">{selectedProject.desc}</div>
-                        </motion.div>
-                    ) : (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                        >
-                            <div className="detail-title" style={{ opacity: 0.3 }}>SELECT A FILE</div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-            </div>
+            <MagazineLayout
+                title="PROYECTOS"
+                items={data}
+                selected={selected}
+                onSelect={setSelected}
+                renderLabel={(item) => item.title}
+                renderDetail={(item) => (
+                    <>
+                        <h2 className="detail-title">{item.title}</h2>
+                        <div className="detail-tech">STACK: {item.tech}</div>
+                        <p className="detail-desc">{item.desc}</p>
+                        {item.link && (
+                            <a
+                                className="detail-link"
+                                href={item.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                [ VER REPOSITORIO ]
+                            </a>
+                        )}
+                    </>
+                )}
+            />
 
             <BackButton />
         </motion.div>

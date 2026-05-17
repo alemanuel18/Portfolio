@@ -1,0 +1,120 @@
+.magazine-layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ─── Panel Izquierdo ─────────────────────────────────────── */
+.magazine-left {
+  width: 42%;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0 60px 60px;
+  background: transparent;
+  position: relative;
+  /* Inclinación diagonal derecha del panel */
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+  background: rgba(255, 255, 255, 0.6);
+  border-right: 2px solid rgba(0, 136, 204, 0.15);
+  backdrop-filter: blur(6px);
+}
+
+.magazine-view-title {
+  font-size: 3rem;
+  color: var(--cyber-dark);
+  margin: 0 0 30px 0;
+  letter-spacing: 4px;
+  border-bottom: 2px solid var(--cyber-primary);
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.magazine-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  padding-right: 40px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cyber-gray) transparent;
+}
+
+/* Tarjeta de item */
+.magazine-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: var(--cyber-white);
+  color: var(--cyber-dark);
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  /* Leve skew para las tarjetas individuales */
+  transform: skewX(-6deg);
+}
+
+.magazine-card > * {
+  /* Contra-skew para que el texto se vea recto */
+  transform: skewX(6deg);
+}
+
+.magazine-card:hover,
+.magazine-card.active {
+  border-left-color: var(--cyber-primary);
+  background: var(--cyber-dark);
+  color: var(--cyber-white);
+}
+
+.magazine-card-label {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.magazine-card-arrow {
+  font-size: 1.4rem;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.magazine-card:hover .magazine-card-arrow,
+.magazine-card.active .magazine-card-arrow {
+  opacity: 1;
+}
+
+/* ─── Panel Derecho ───────────────────────────────────────── */
+.magazine-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  position: relative;
+}
+
+.magazine-detail {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* Placeholder sin selección */
+.magazine-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.25;
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+}
+
+.placeholder-text {
+  font-size: 1.2rem;
+  letter-spacing: 4px;
+  font-family: var(--font-cyber);
+}

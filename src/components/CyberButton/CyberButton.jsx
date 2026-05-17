@@ -3,67 +3,57 @@ import { useState } from 'react';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './CyberButton.css';
 
-const BTN_W = 150;
-const BTN_H = 44;
+const BTN_W = 200;
+const BTN_H = 46;
 const COLS = 5;
-const ROWS = 1;
 
-/*
-  Vértices compartidos: para cada fila generamos COLS+2 puntos que alternan
-  entre y0 (borde superior) e y1 (borde inferior), formando un zigzag.
+// Paleta azul Detroit proporcionada por el usuario
+const BLUES = ['#0f334f', '#193f5f', '#194872', '#24547c', '#1a4060', '#0d2e47'];
 
-  Índice par   → punto en y0 (arriba)
-  Índice impar → punto en y1 (abajo)
-
-  Cada triángulo c usa los vértices [c], [c+1], [c+2].
-  Como los vértices son compartidos, no hay ningún gap entre triángulos.
-
-  Triángulo par  (▲): pico arriba  → colorUp
-  Triángulo impar (▽): pico abajo  → colorDown (tono más oscuro)
-*/
-function buildTriangles(hover) {
-    const tris = [];
-    const ch = BTN_H / ROWS;
-    const colorUp = hover ? '0,120,220' : '90,140,200';
-    const colorDown = hover ? '0,65,160' : '50,100,170';
-
-    for (let r = 0; r < ROWS; r++) {
-        const y0 = r * ch;
-        const y1 = y0 + ch;
-
-        const verts = [];
-        for (let i = 0; i <= COLS + 1; i++) {
-            verts.push({
-                x: (i / (COLS + 1)) * BTN_W,
-                y: i % 2 === 0 ? y0 : y1,
-            });
-        }
-
-        for (let c = 0; c < COLS; c++) {
-            const isUp = c % 2 === 0;
-            const color = isUp ? colorUp : colorDown;
-            const idx = r * COLS + c;
-            const op = hover
-                ? 0.20 + (idx % 5) * 0.055
-                : 0.035 + (idx % 4) * 0.018;
-
-            const a = verts[c];
-            const b = verts[c + 1];
-            const d = verts[c + 2];
-
-            tris.push(
-                <polygon
-                    key={`t-${r}-${c}`}
-                    points={`${a.x},${a.y} ${b.x},${b.y} ${d.x},${d.y}`}
-                    fill={`rgba(${color},${op.toFixed(3)})`}
-                />
-            );
-        }
-    }
-    return tris;
+function hexToRgb(hex) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `${r},${g},${b}`;
 }
 
 function TrianglePattern({ hover }) {
+    // Vértices en zigzag, cubriendo todo el ancho
+    const verts = [];
+    for (let i = 0; i <= COLS + 1; i++) {
+        verts.push({
+            x: (i / (COLS + 1)) * BTN_W,
+            y: i % 2 === 0 ? 0 : BTN_H,
+        });
+    }
+
+    const tris = [];
+    for (let c = 0; c < COLS; c++) {
+        let fillColor;
+        let fillOpacity;
+
+        if (hover) {
+            // Activo: azules ricos y variados del Detroit palette
+            const blue = BLUES[c % BLUES.length];
+            fillColor = hexToRgb(blue);
+            fillOpacity = 0.85 + (c % 3) * 0.05; // 0.85 – 0.95, casi sólido
+        } else {
+            // Inactivo: casi transparente, solo se intuye el patrón
+            // Alternamos entre un gris muy tenue y algo ligeramente más oscuro
+            const isEven = c % 2 === 0;
+            fillColor = isEven ? '80,110,140' : '60,90,120';
+            fillOpacity = isEven ? 0.08 : 0.12; // Muy bajo → casi invisible
+        }
+
+        tris.push(
+            <polygon
+                key={`t-${c}`}
+                points={`${verts[c].x},${verts[c].y} ${verts[c + 1].x},${verts[c + 1].y} ${verts[c + 2].x},${verts[c + 2].y}`}
+                fill={`rgba(${fillColor},${fillOpacity})`}
+            />
+        );
+    }
+
     return (
         <svg
             className="cyber-button__svg"
@@ -71,25 +61,32 @@ function TrianglePattern({ hover }) {
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
         >
+            {/* Fondo: casi invisible inactivo, oscuro activo */}
             <rect
                 width={BTN_W}
                 height={BTN_H}
-                fill={hover ? 'var(--cyber-primary-glow)' : 'rgba(170,205,235,0.07)'}
+                fill={hover ? '#0d2e47' : 'rgba(100,140,180,0.06)'}
             />
-            {buildTriangles(hover)}
+            {/* Triángulos */}
+            {tris}
+            {/* Borde perimetral */}
             <rect
                 width={BTN_W}
                 height={BTN_H}
                 fill="none"
-                stroke={hover ? 'var(--cyber-primary)' : 'rgba(130,175,220,0.18)'}
-                strokeWidth="0.8"
+                stroke={hover ? 'rgba(36,84,124,0.9)' : 'rgba(80,130,175,0.15)'}
+                strokeWidth="1"
             />
         </svg>
     );
 }
 
+/**
+ * Corchetes negros en las cuatro esquinas.
+ * Solo visibles en hover/activo.
+ */
 function Brackets() {
-    const s = 9;
+    const s = 7;
     return (
         <svg
             className="cyber-button__brackets"
@@ -97,11 +94,15 @@ function Brackets() {
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
         >
-            <g fill="none" stroke="rgba(106, 142, 150, 0.95)" strokeWidth="1.8">
-                <polyline points={`${s},0 0,0 0,${s}`} />
-                <polyline points={`${BTN_W - s},0 ${BTN_W},0 ${BTN_W},${s}`} />
-                <polyline points={`0,${BTN_H - s} 0,${BTN_H} ${s},${BTN_H}`} />
-                <polyline points={`${BTN_W},${BTN_H - s} ${BTN_W},${BTN_H} ${BTN_W - s},${BTN_H}`} />
+            <g fill="none" stroke="rgba(0,0,0,0.85)" strokeWidth="2.2" strokeLinecap="square">
+                {/* ↖ */}
+                <polyline points={`${s},1 1,1 1,${s}`} />
+                {/* ↗ */}
+                <polyline points={`${BTN_W - s},1 ${BTN_W - 1},1 ${BTN_W - 1},${s}`} />
+                {/* ↙ */}
+                <polyline points={`1,${BTN_H - s} 1,${BTN_H - 1} ${s},${BTN_H - 1}`} />
+                {/* ↘ */}
+                <polyline points={`${BTN_W - 1},${BTN_H - s} ${BTN_W - 1},${BTN_H - 1} ${BTN_W - s},${BTN_H - 1}`} />
             </g>
         </svg>
     );
@@ -124,6 +125,7 @@ export default function CyberButton({ children, onClick, active = false }) {
             onMouseLeave={() => setHovered(false)}
             onClick={handleClick}
             whileTap={{ scale: 0.96 }}
+            transition={{ duration: 0.15 }}
         >
             <TrianglePattern hover={isActive} />
             <Brackets />

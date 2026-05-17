@@ -3,7 +3,6 @@ import { useCyberSound } from '../../hooks/useCyberSound';
 import './CyberTimeline.css';
 
 /**
- * Componente reutilizable para la línea de tiempo estilo "Chapters".
  *
  * @param {Object[]} items - Arreglo de objetos de datos.
  * @param {Function} renderCard - Función que recibe (item, index) y devuelve el contenido de la tarjeta.
@@ -13,7 +12,6 @@ export default function CyberTimeline({ items, renderCard }) {
 
     return (
         <div className="cyber-timeline-container">
-            {/* Línea central de conexión SVG */}
             <svg className="timeline-svg" preserveAspectRatio="none">
                 <line
                     x1="0" y1="50%"

@@ -40,7 +40,7 @@
   scrollbar-color: var(--cyber-gray) transparent;
 }
 
-/* Tarjeta de item */
+/* Tarjeta rectangular — sin skew */
 .magazine-card {
   display: flex;
   align-items: center;
@@ -52,13 +52,6 @@
   border-left: 3px solid transparent;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   transition: border-color 0.2s, background 0.2s, color 0.2s;
-  /* Leve skew para las tarjetas individuales */
-  transform: skewX(-6deg);
-}
-
-.magazine-card>* {
-  /* Contra-skew para que el texto se vea recto */
-  transform: skewX(6deg);
 }
 
 .magazine-card:hover,

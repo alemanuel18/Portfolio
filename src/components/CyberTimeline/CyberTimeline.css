@@ -32,30 +32,30 @@
   z-index: 0;
 }
 
-/* Nodo / tarjeta del timeline */
+/* Nodo / tarjeta del timeline — diseño trapezoidal clásico */
 .timeline-node {
   position: relative;
-  min-width: 260px;
-  max-width: 300px;
+  min-width: 300px;
+  height: 150px;
   background: var(--cyber-white);
   color: var(--cyber-dark);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 24px 36px 24px 28px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0% 100%);
-  border-left: 3px solid var(--cyber-primary);
-  cursor: default;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  padding: 20px 44px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* Trapezoid fuerte igual al diseño original */
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   z-index: 1;
 }
 
 .timeline-node:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 16px 40px rgba(0, 136, 204, 0.2);
-  background: var(--cyber-dark);
+  background: var(--cyber-primary);
   color: var(--cyber-white);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 136, 204, 0.3);
 }
 
 .timeline-node:hover .timeline-dot {

@@ -1,11 +1,27 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 import BackButton from '../../components/BackButton/BackButton';
+import { useCyber } from '../../context/CyberContext';
+import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import CyberButton from '../../components/CyberButton/CyberButton';
 import './AboutMe.css';
 
 export default function AboutMe() {
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState(null);
+    const { fetchCyberData } = useCyber();
+    const [selectedAboutMe, setSelectedAboutMe] = useState(null);
+
+    useEffect(() => {
+        playNavigare();
+        fetchCyberData('aboutme').then(res => {
+            setData(res[0]);
+            setLoading(false);
+        });
+    }, []);
+
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { duration: 0.8, staggerChildren: 0.2 } },
@@ -21,6 +37,10 @@ export default function AboutMe() {
         hidden: { opacity: 0, y: 30 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
     };
+
+
+
+    if (loading) return <LoadingScreen />;
 
     const contacts = [
         {
@@ -67,12 +87,12 @@ export default function AboutMe() {
                 </motion.div>
 
                 <motion.div className="about-right" variants={rightVariants}>
-                    <h1 className="about-title">ALEJANDRO JEREZ</h1>
+                    <h1 className="about-title">{data.name}</h1>
 
                     <div className="about-meta">
-                        <span><strong>DESARROLLADOR:</strong> WEB FULL-STACK</span>
-                        <span><strong>STATUS:</strong> JUNIOR</span>
-                        <span><strong>ESPECIALIDAD:</strong> FRONTEND & UI/UX</span>
+                        <span><strong>DESARROLLADOR:</strong>{data.developer}</span>
+                        <span><strong>STATUS:</strong>{data.status}</span>
+                        <span><strong>ESPECIALIDAD:</strong>{data.especialidad}</span>
                     </div>
 
                     <div className="about-contacts">

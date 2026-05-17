@@ -9,7 +9,7 @@ import './Courses.css';
 export default function Courses() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
-    const [selectedProject, setSelectedProject] = useState(null);
+    const [selectedCourse, setSelectedCourse] = useState(null);
     const { fetchCyberData } = useCyber();
     const { playNavigare, playHover, playInOption } = useCyberSound();
 
@@ -21,9 +21,9 @@ export default function Courses() {
         });
     }, []);
 
-    const handleSelect = (project) => {
+    const handleSelect = (course) => {
         playInOption();
-        setSelectedProject(project);
+        setSelectedCourse(course);
     };
 
     const containerVariants = {
@@ -48,7 +48,7 @@ export default function Courses() {
                     {data.map((item, index) => (
                         <motion.div
                             key={item.id}
-                            className={`magazine-card ${selectedProject?.id === item.id ? 'active' : ''}`}
+                            className={`magazine-card ${selectedCourse?.id === item.id ? 'active' : ''}`}
                             onMouseEnter={playHover}
                             onClick={() => handleSelect(item)}
                             initial={{ opacity: 0, x: -20 }}
@@ -62,17 +62,17 @@ export default function Courses() {
 
             <div className="projects-right">
                 <AnimatePresence mode="wait">
-                    {selectedProject ? (
+                    {selectedCourse ? (
                         <motion.div
-                            key={selectedProject.id}
+                            key={selectedCourse.id}
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -50 }}
                             transition={{ duration: 0.3 }}
                         >
-                            <h2 className="detail-title">{selectedProject.title}</h2>
-                            <div className="detail-tech">STACK: {selectedProject.tech}</div>
-                            <div className="detail-desc">{selectedProject.desc}</div>
+                            <h2 className="detail-title">{selectedCourse.title}</h2>
+                            <div className="detail-tech">STACK: {selectedCourse.tech}</div>
+                            <div className="detail-desc">{selectedCourse.desc}</div>
                         </motion.div>
                     ) : (
                         <motion.div

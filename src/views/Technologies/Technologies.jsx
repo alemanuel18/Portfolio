@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
+import CyberSplitPanel from '../../components/CyberSplitPanel/CyberSplitPanel';
 import { useCyber } from '../../context/CyberContext';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Technologies.css';
@@ -26,16 +27,6 @@ export default function Technologies() {
         exit: { opacity: 0, x: 50, transition: { duration: 0.3 } }
     };
 
-    const leftVariants = {
-        hidden: { opacity: 0, x: -50 },
-        visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
-    };
-
-    const rightVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-    };
-
     if (loading) return <LoadingScreen />;
 
     return (
@@ -46,36 +37,35 @@ export default function Technologies() {
             animate="visible"
             exit="exit"
         >
-            <div className="tech-split">
-                <motion.div className="tech-left" variants={leftVariants}>
-                    <div className="system-graphic-container">
-                        <div className="tech-filter"></div>
-                        <div style={{ textAlign: 'center' }}>
-                            <div style={{ fontSize: '3rem', marginBottom: '10px' }}>⚡</div>
-                            [ DIAGNOSTIC MODULES ACTIVE ]
-                        </div>
+            <CyberSplitPanel
+                leftClipPath="polygon(15% 0, 100% 0, 85% 100%, 0 100%)"
+                leftContent={
+                    <div className="tech-graphic">
+                        <div className="tech-graphic-icon">⚡</div>
+                        <div>[ DIAGNOSTIC MODULES ACTIVE ]</div>
                     </div>
-                </motion.div>
+                }
+                rightContent={
+                    <>
+                        <h1 className="tech-title">TECNOLOGÍAS</h1>
 
-                <motion.div className="tech-right" variants={rightVariants}>
-                    <h1 className="tech-title">TECNOLOGÍAS</h1>
-                    
-                    <div className="tech-meta">
-                        {data.map((tech, index) => (
-                            <motion.div 
-                                className="tech-item" 
-                                key={tech.id}
-                                onMouseEnter={playHover}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0, transition: { delay: index * 0.1 } }}
-                            >
-                                <span>{tech.name}</span>
-                                <span className="tech-status">[{tech.level}]</span>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-            </div>
+                        <div className="tech-meta">
+                            {data.map((tech, index) => (
+                                <motion.div
+                                    className="tech-item"
+                                    key={tech.id}
+                                    onMouseEnter={playHover}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0, transition: { delay: index * 0.1 } }}
+                                >
+                                    <span>{tech.name}</span>
+                                    <span className="tech-status">[{tech.level}]</span>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </>
+                }
+            />
 
             <BackButton />
         </motion.div>

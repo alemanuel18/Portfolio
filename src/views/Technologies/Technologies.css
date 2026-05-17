@@ -11,82 +11,49 @@
   box-sizing: border-box;
 }
 
-.tech-split {
-  display: flex;
-  width: 90%;
-  max-width: 1200px;
-  height: 70vh;
-  gap: 50px;
-}
-
-.tech-left {
-  flex: 1;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.system-graphic-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
-  background: var(--cyber-dark);
-  overflow: hidden;
-  border-left: 5px solid var(--cyber-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cyber-white);
-  font-family: var(--mono);
-}
-
-.tech-filter {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 136, 204, 0.2);
-  mix-blend-mode: overlay;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.tech-right {
-  flex: 1;
+/* Contenido del panel izquierdo (gráfico diagnóstico) */
+.tech-graphic {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 40px;
+  align-items: center;
+  gap: 12px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 3;
+  position: relative;
 }
 
+.tech-graphic-icon {
+  font-size: 3rem;
+}
+
+/* ─── Panel derecho (via CyberSplitPanel .csp-right) ─── */
 .tech-title {
   font-size: 3rem;
   color: var(--cyber-dark);
-  margin-bottom: 20px;
+  margin: 0 0 20px 0;
   border-bottom: 2px solid var(--cyber-primary);
   padding-bottom: 10px;
   display: inline-block;
 }
 
 .tech-meta {
-  font-family: var(--mono);
+  font-family: monospace;
   font-size: 0.9rem;
   color: var(--cyber-gray);
-  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 14px;
 }
 
 .tech-item {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid var(--cyber-border);
-  padding-bottom: 5px;
-  font-weight: bold;
+  padding-bottom: 6px;
+  font-weight: 600;
 }
 
 .tech-status {

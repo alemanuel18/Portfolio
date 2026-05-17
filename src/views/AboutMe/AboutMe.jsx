@@ -4,18 +4,19 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 import BackButton from '../../components/BackButton/BackButton';
 import { useCyber } from '../../context/CyberContext';
+import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import CyberButton from '../../components/CyberButton/CyberButton';
 import './AboutMe.css';
 
 export default function AboutMe() {
-    const [setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null);
     const { fetchCyberData } = useCyber();
 
     useEffect(() => {
-        playNavigare();
         fetchCyberData('aboutme').then(res => {
             setData(res[0]);
+            setLoading(false);
         });
     }, []);
 
@@ -24,19 +25,16 @@ export default function AboutMe() {
             label: 'LinkedIn',
             icon: <FaLinkedin size={20} />,
             href: 'https://www.linkedin.com/in/alejandro-manuel-jerez-melgar-735836289/',
-            title: 'Ver perfil de LinkedIn'
         },
         {
             label: 'Gmail',
             icon: <SiGmail size={20} />,
             href: 'mailto:alemanuelj5@gmail.com?subject=Contacto desde portfolio&body=Hola Alejandro,',
-            title: 'Enviar correo'
         },
         {
             label: 'GitHub',
             icon: <FaGithub size={20} />,
             href: 'https://github.com/alemanuel18',
-            title: 'Ver perfil de GitHub'
         }
     ];
 
@@ -60,6 +58,7 @@ export default function AboutMe() {
         visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
     };
 
+    if (loading) return <LoadingScreen />;
 
     return (
         <motion.div
@@ -83,30 +82,24 @@ export default function AboutMe() {
                     <h1 className="about-title">{data.name}</h1>
 
                     <div className="about-meta">
-                        <span><strong>DESARROLLADOR:</strong>{data.developer}</span>
-                        <span><strong>STATUS:</strong>{data.status}</span>
-                        <span><strong>ESPECIALIDAD:</strong>{data.especialidad}</span>
+                        <span><strong>DESARROLLADOR:</strong> {data.developer}</span>
+                        <span><strong>STATUS:</strong> {data.status}</span>
+                        <span><strong>ESPECIALIDAD:</strong> {data.especialidad}</span>
                     </div>
 
                     <div className="about-contacts">
                         {contacts.map((contact) => (
                             <CyberButton
                                 key={contact.label}
-                                title={contact.label}
                                 onClick={() => handleContact(contact)}
                             >
-                                <span className="contact-btn-inner">
-                                    {contact.icon}
-                                </span>
+                                {contact.icon}
                             </CyberButton>
                         ))}
                     </div>
 
                     <div className="about-bio">
-                        <p>
-                            Desarrollador FULL-STACK, especializado en interfaces dinámicas y experiencias de usuario inmersivas.
-                            Especializado en React, HTML, CSS, JavaScript, TypeScript y diseño moderno.
-                        </p>
+                        <p>{data.description}</p>
                     </div>
                 </motion.div>
             </div>

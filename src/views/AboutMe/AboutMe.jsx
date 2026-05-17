@@ -1,15 +1,9 @@
 import { motion } from 'framer-motion';
 import BackButton from '../../components/BackButton/BackButton';
 import './AboutMe.css';
-import { useCyberSound } from '../../hooks/useCyberSound';
-import { useEffect } from 'react';
 
 export default function AboutMe() {
-    const { playOpenPortfolio } = useCyberSound();
 
-    useEffect(() => {
-        playOpenPortfolio();
-    }, []);
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -47,11 +41,11 @@ export default function AboutMe() {
                 </motion.div>
 
                 <motion.div className="about-right" variants={rightVariants}>
-                    <h1 className="about-title">ALEMANUEL</h1>
+                    <h1 className="about-title">ALEJANDRO JEREZ</h1>
 
                     <div className="about-meta">
-                        <span><strong>MODEL:</strong> DEV-2026</span>
-                        <span><strong>STATUS:</strong> ONLINE</span>
+                        <span><strong>DESARROLLADOR:</strong> WEB FULL-STACK</span>
+                        <span><strong>STATUS:</strong>JUNIOR</span>
                         <span><strong>SPECIALTY:</strong> FRONTEND & UI/UX</span>
                     </div>
 

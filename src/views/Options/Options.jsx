@@ -4,15 +4,11 @@ import { useCyber } from '../../context/CyberContext';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import CyberButton from '../../components/CyberButton/CyberButton';
 import './Options.css';
-import { useEffect } from 'react';
 
 export default function Options() {
     const { lang, setLang, volume, setVolume, t } = useCyber();
-    const { playOpenPortfolio, playInOption } = useCyberSound();
+    const { playInOption } = useCyberSound();
 
-    useEffect(() => {
-        playOpenPortfolio();
-    }, []);
 
     const containerVariants = {
         hidden: { opacity: 0, scale: 0.95 },

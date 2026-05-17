@@ -6,22 +6,89 @@ const mockData = {
     projects: [
         {
             id: 1,
-            title: 'Project Eden',
-            tech: 'React, Node, MongoDB',
-            desc: 'A cybernetic garden for androids.',
-            img: '/image/projects/project1.png',
-            repo: 'https://github.com/alemanuel18/project-eden',
-            demo: ''
+            title: 'Swap - Frontend',
+            tech: 'Next.js, TypeScript, CSS(BEM methodology), Zustand, React Hook Form, date-fns, Socker.io, Docker + Docker Compose',
+            desc: 'Sistema de intercambios/venta de productos/servicios entre estudiantes.',
+            repo: 'https://github.com/her24770/swap-frontend',
+            demo: 'https://swap.jhgo.online/es/login'
         },
         {
             id: 2,
-            title: 'Kamski Protocol',
-            tech: 'Python, AI, TensorFlow',
-            desc: 'Emergency override system designed by Elijah Kamski.',
-            img: '/image/projects/project2.png',
-            repo: 'https://github.com/alemanuel18/kamski-protocol',
-            demo: 'https://kamski.vercel.app'
-        }
+            title: 'Swap - Backend',
+            tech: 'Node.js, Express.js, TypeScript, Socker.io, Zod, JSON Web Token, Prisma, PostgreSQL, Redis 7, Docker + Docker Compose',
+            desc: 'Sistema de intercambios/venta de productos/servicios entre estudiantes.',
+            repo: 'https://github.com/her24770/swap-backend',
+            demo: 'https://swap.jhgo.online/es/login'
+        },
+        {
+            id: 3,
+            title: 'Portafolio_Detroid',
+            tech: 'React + Vite, React Router, JavaScript, CSS, HTMl in Canvas, Docker + Docker Compose',
+            desc: 'Portafolio personal, enfocado en las tecnologías utilizadas en la carrera de Ingeniería en Ciencias de la Computación y TI',
+            repo: 'https://github.com/alemanuel18/Portfolio',
+            demo: 'https://swap.jhgo.online/es/login'
+        },
+        {
+            id: 4,
+            title: 'Pokedex',
+            tech: 'React + Vite, CSS, JavaScript, React Router, prop-types, PokéAPI, Docker + Docker Compose',
+            desc: 'Ejercicio de React consultando la PokeAPI, para mostrar los pokemon de primera generación.',
+            repo: 'https://github.com/alemanuel18/Ejercicio4_React_Pokedex',
+            demo: 'https://swap.jhgo.online/es/login'
+        },
+        {
+            id: 5,
+            title: 'Calculadora',
+            tech: 'React + Vite, TypeScript, CSS, Docker + Docker Compose',
+            desc: 'Calculadora con operaciones basicas.',
+            repo: 'https://github.com/alemanuel18/Lab7_Calculadora',
+            demo: 'https://swap.jhgo.online/es/login'
+        },
+        {
+            id: 6,
+            title: 'Snake',
+            tech: 'React + Vite,JavaScript, CSS, Docker + Docker Compose',
+            desc: 'Videojuego de Snake.',
+            repo: 'https://github.com/alemanuel18/Lab6_Snake',
+            demo: 'https://swap.jhgo.online/es/login'
+        },
+        {
+            id: 7,
+            title: 'Sistema de Inventario y Ventas',
+            tech: 'Node.js, MySQL, React + Vite, CSS, SQL, Docker + Docker Compose',
+            desc: 'Sistema de inventario y ventas, para una tienda minorista, (La mejor rama es db/Proyecto-3).',
+            repo: 'https://github.com/alemanuel18/Proyecto2_DB',
+            demo: 'https://proyecto2db-production.up.railway.app/'
+        },
+        {
+            id: 8,
+            title: 'Tracked — Frontend',
+            tech: 'HTML, CSS, JS vanilla, nginx, Docker + Docker Compose',
+            desc: 'Este proyecto corresponde al frontend de un sistema para traquear las series que has visto.',
+            repo: 'https://github.com/alemanuel18/Proyecto1_Full-Stack_Web_Frontend',
+        },
+        {
+            id: 9,
+            title: 'Tracked — Backend',
+            tech: 'Go, PostgreSQL, API REST, Docker + Docker Compose',
+            desc: 'Este proyecto corresponde al Backend de un sistema para traquear las series que has visto.',
+            repo: 'https://github.com/alemanuel18/Proyecto1_Full-Stack_Web_Backend',
+            demo: 'https://swap.jhgo.online/es/login'
+        },
+        {
+            id: 10,
+            title: 'Sistema de Recomendación de Profesores',
+            tech: 'React, FastAPI',
+            desc: 'Este proyecto corresponde al frontend de un sistema de recomendación de profesores universitarios, desarrollado con React y conectado a su respectivo backend utilizando FastAPI. Permite a los estudiantes recibir sugerencias personalizadas de profesores con base en criterios como experiencia, calificaciones y áreas de especialidad. ',
+            repo: 'https://github.com/alemanuel18/Front-Profesor-Recommendation-System',
+        },
+        {
+            id: 11,
+            title: 'Sistema de Recomendación de Profesores - Backend',
+            tech: 'Python, Neo4j',
+            desc: 'Este proyecto corresponde al backend de un sistema de recomendación de profesores universitarios, desarrollado con Python y la librería Poetry para dependencias, además de que se conecta con una base de datos basada en grafos con la ayuda de Neo4J.',
+            repo: 'https://github.com/MarceloDetlefsen/Back-Professor-Recommendation-System',
+        },
     ],
     experience: [
         { id: 1, role: 'Técnico de Soporte TI', company: 'Procuraduría De Los Derechos Humanos', year: '2023', img: '/image/experience/exp1.png', desc: 'Técnico de TI, encargado de dar soporte y preparar hardware y software, para los trabajadores de la institución.' },

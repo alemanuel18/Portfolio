@@ -41,8 +41,8 @@ export default function Experience() {
             <div className="timeline-container">
                 <div className="timeline-line"></div>
                 {data.map((item, index) => (
-                    <motion.div 
-                        key={item.id} 
+                    <motion.div
+                        key={item.id}
                         className="timeline-node"
                         onMouseEnter={playHover}
                         initial={{ opacity: 0, y: 50 }}

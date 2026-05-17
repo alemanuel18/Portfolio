@@ -5,10 +5,10 @@ import { useCyberSound } from '../../hooks/useCyberSound';
 import { useEffect } from 'react';
 
 export default function AboutMe() {
-    const { playNavigare } = useCyberSound();
+    const { playOpenPortfolio } = useCyberSound();
 
     useEffect(() => {
-        playNavigare();
+        playOpenPortfolio();
     }, []);
 
     const containerVariants = {
@@ -40,7 +40,7 @@ export default function AboutMe() {
                     <div className="profile-pic-container">
                         {/* Aquí va la imagen real de perfil */}
                         <div className="profile-filter"></div>
-                        <div style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '2rem'}}>
+                        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '2rem' }}>
                             [ IMAGE SIGNAL LOST ]
                         </div>
                     </div>
@@ -48,7 +48,7 @@ export default function AboutMe() {
 
                 <motion.div className="about-right" variants={rightVariants}>
                     <h1 className="about-title">ALEMANUEL</h1>
-                    
+
                     <div className="about-meta">
                         <span><strong>MODEL:</strong> DEV-2026</span>
                         <span><strong>STATUS:</strong> ONLINE</span>
@@ -57,7 +57,7 @@ export default function AboutMe() {
 
                     <div className="about-bio">
                         <p>
-                            Desarrollador enfocado en la creación de interfaces dinámicas y experiencias de usuario inmersivas. 
+                            Desarrollador enfocado en la creación de interfaces dinámicas y experiencias de usuario inmersivas.
                             Capacitado en React, Vite, y diseño moderno.
                         </p>
                     </div>

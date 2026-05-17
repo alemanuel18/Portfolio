@@ -8,10 +8,10 @@ import { useEffect } from 'react';
 
 export default function Options() {
     const { lang, setLang, volume, setVolume, t } = useCyber();
-    const { playNavigare, playInOption } = useCyberSound();
+    const { playOpenPortfolio, playInOption } = useCyberSound();
 
     useEffect(() => {
-        playNavigare();
+        playOpenPortfolio();
     }, []);
 
     const containerVariants = {

@@ -15,7 +15,6 @@
   width: 600px;
   background: rgba(255, 255, 255, 0.9);
   padding: 50px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   border-left: 10px solid var(--cyber-primary);
   display: flex;
   flex-direction: column;

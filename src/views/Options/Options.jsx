@@ -43,12 +43,12 @@ export default function Options() {
 
                 <div className="option-group">
                     <span className="option-label">{t.options.volume}</span>
-                    <input 
-                        type="range" 
-                        min="0" 
-                        max="1" 
-                        step="0.1" 
-                        value={volume} 
+                    <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.1"
+                        value={volume}
                         onChange={handleVolumeChange}
                         onMouseUp={() => playInOption()} // Test sound when releasing slider
                         className="cyber-slider"
@@ -58,14 +58,14 @@ export default function Options() {
                 <div className="option-group">
                     <span className="option-label">{t.options.lang}</span>
                     <div className="lang-toggle">
-                        <button 
+                        <button
                             className={`lang-btn ${lang === 'es' ? 'active' : ''}`}
                             onClick={() => handleLangChange('es')}
                             onMouseEnter={playHover}
                         >
                             ES
                         </button>
-                        <button 
+                        <button
                             className={`lang-btn ${lang === 'en' ? 'active' : ''}`}
                             onClick={() => handleLangChange('en')}
                             onMouseEnter={playHover}

@@ -1,12 +1,13 @@
 :root {
   /* CyberLife Light Colors */
-  --cyber-primary: #0088cc; /* Un azul un poco más oscuro para que se vea en fondo claro */
-  --cyber-primary-glow: rgba(0, 136, 204, 0.3);
+  --cyber-primary: rgba(0, 170, 255, 0.55);
+  --cyber-primary-glow: rgba(0, 90, 190, 0.40);
   --cyber-dark: #1a222d;
   --cyber-white: #ffffff;
   --cyber-gray: #8292a5;
   --cyber-border: rgba(0, 0, 0, 0.1);
-  --cyber-bg: #eef5fb; /* Very light clinical blue/white */
+  --cyber-bg: #eef5fb;
+  /* Very light clinical blue/white */
 
   /* Fonts */
   --font-cyber: 'Jura', sans-serif;
@@ -18,7 +19,8 @@ body {
   background-color: var(--cyber-bg);
   color: var(--cyber-dark);
   font-family: var(--font-cyber);
-  overflow: hidden; /* Evitar scroll global, manejar en vistas */
+  overflow: hidden;
+  /* Evitar scroll global, manejar en vistas */
   user-select: none;
 }
 
@@ -31,7 +33,12 @@ body {
 }
 
 /* Tipografía global */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -49,7 +56,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .skew-content {
-  transform: skewX(10deg); /* Para enderezar el texto dentro de un contenedor inclinado */
+  transform: skewX(10deg);
+  /* Para enderezar el texto dentro de un contenedor inclinado */
 }
 
 .cyber-clip {
@@ -62,9 +70,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Animaciones */
 @keyframes pulse {
-  0% { opacity: 0.8; }
-  50% { opacity: 1; text-shadow: 0 0 8px var(--cyber-white); }
-  100% { opacity: 0.8; }
+  0% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 8px var(--cyber-white);
+  }
+
+  100% {
+    opacity: 0.8;
+  }
 }
 
 .animate-pulse-slow {
@@ -72,8 +89,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
 }
 
 .scanline-effect {
@@ -93,13 +115,16 @@ h1, h2, h3, h4, h5, h6 {
   width: 6px;
   height: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--cyber-gray);
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--cyber-primary);
 }

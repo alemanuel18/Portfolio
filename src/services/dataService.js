@@ -1,7 +1,7 @@
 // Datos simulados de los servidores de CyberLife
 const mockData = {
     aboutme: [
-        { id: 1, name: 'ALEJANDRO JEREZ', developer: 'WEB FULL-STACK', status: 'JUNIOR', especialidad: 'FRONTEND & UI/UX', description: 'Desarrollador FULL-STACK, especializado en interfaces dinámicas y experiencias de usuario inmersivas. Especializado en React, HTML, CSS, JavaScript, TypeScript y diseño moderno.', img: '/image/aboutme/about0.webp' }
+        { id: 1, name: 'ALEJANDRO JEREZ', developer: 'WEB FULL-STACK', status: 'JUNIOR', especialidad: 'FRONTEND & UI/UX', description: 'Desarrollador FULL-STACK, especializado en interfaces dinámicas y experiencias de usuario inmersivas. Especializado en React, HTML, CSS, JavaScript, TypeScript y UI/UX', img: '/image/aboutme/about0.webp' }
     ],
     projects: [
         {
@@ -100,11 +100,11 @@ const mockData = {
         { id: 2, degree: 'Ingeniería en Ciencias de la Computación y TI', institution: 'Universidad del Valle de Guatemala', year: '2024 - Presente', img: '/image/studies/studies2.png', desc: 'Estudiante de Tercer Año con beca parcial por parte de la universidad. Reconocimiento académico en los primeros dos años de estudio.' }
     ],
     courses: [
-        { id: 1, title: 'Curso de React.js', platform: 'Platzi', desc: 'Desarrolla aplicaciones web modernas con React. Crea componentes, maneja estado y eventos, aplica hooks, consume APIs, estiliza interfaces y usa TypeScript para mayor seguridad. Conoce las novedades de React 19.', link: '' },
-        { id: 2, title: 'Curso Profesional de Git y GitHub', platform: 'Platzi', desc: 'Gestiona versiones, colabora en equipo y publica proyectos usando Git y GitHub. Controla ramas, pull requests, releases, seguridad y automatizaciones con herramientas clave de la industria.', link: '' },
-        { id: 3, title: 'Curso de HTML', platform: 'Platzi', desc: 'Domina la estructura esencial de las páginas web con HTML. Aprende a escribir código limpio, jerarquizado y funcional. Comprende el rol de HTML en la web moderna y cómo su estructura impacta la accesibilidad, el SEO y la mantenibilidad del sitio.', link: '' },
-        { id: 4, title: 'Reto de 30 Días De JS', platform: 'Platzi', desc: 'Durante 6 semanas continuas estaremos aprendiendo desde 0 las características de JavaScript con la peculiaridad de aprender conceptos nuevos diariamente con ejercicios prácticos y cursos de tus profesores favoritos.', link: '' },
-        { id: 5, title: 'Introducción a la Terminal y Línea de Comandos', platform: 'Platzi', desc: 'Aprende a utilizar la terminal y la línea de comandos para navegar tu sistema operativo, manipular archivos y directorios, comprender permisos y procesos, y usar herramientas como grep y curl.', link: '' },
+        { id: 1, title: 'Curso de React.js', platform: 'Platzi', desc: 'Desarrolla aplicaciones web modernas con React. Crea componentes, maneja estado y eventos, aplica hooks, consume APIs, estiliza interfaces y usa TypeScript para mayor seguridad. Conoce las novedades de React 19.', link: 'https://platzi.com/p/alemanuelj17/curso/11887-course/diploma/detalle/' },
+        { id: 2, title: 'Curso Profesional de Git y GitHub', platform: 'Platzi', desc: 'Gestiona versiones, colabora en equipo y publica proyectos usando Git y GitHub. Controla ramas, pull requests, releases, seguridad y automatizaciones con herramientas clave de la industria.', link: 'https://platzi.com/p/alemanuelj17/curso/1557-course/diploma/detalle/' },
+        { id: 3, title: 'Curso de HTML', platform: 'Platzi', desc: 'Domina la estructura esencial de las páginas web con HTML. Aprende a escribir código limpio, jerarquizado y funcional. Comprende el rol de HTML en la web moderna y cómo su estructura impacta la accesibilidad, el SEO y la mantenibilidad del sitio.', link: 'https://platzi.com/p/alemanuelj17/curso/12341-course/diploma/detalle/' },
+        { id: 4, title: 'Reto de 30 Días De JS', platform: 'Platzi', desc: 'Durante 6 semanas continuas estaremos aprendiendo desde 0 las características de JavaScript con la peculiaridad de aprender conceptos nuevos diariamente con ejercicios prácticos y cursos de tus profesores favoritos.', link: 'https://platzi.com/p/alemanuelj17/curso/6636-course/diploma/detalle/' },
+        { id: 5, title: 'Introducción a la Terminal y Línea de Comandos', platform: 'Platzi', desc: 'Aprende a utilizar la terminal y la línea de comandos para navegar tu sistema operativo, manipular archivos y directorios, comprender permisos y procesos, y usar herramientas como grep y curl.', link: 'https://platzi.com/p/alemanuelj17/curso/12040-course/diploma/detalle/' },
     ],
     technologies: [
         { id: 1, name: 'React (Vite)', level: 'OPTIMAL' },

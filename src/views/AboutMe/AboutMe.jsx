@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
 import BackButton from '../../components/BackButton/BackButton';
+import CyberButton from '../../components/CyberButton/CyberButton';
 import './AboutMe.css';
 
 export default function AboutMe() {
-
-
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { duration: 0.8, staggerChildren: 0.2 } },
@@ -21,6 +22,32 @@ export default function AboutMe() {
         visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
     };
 
+    const contacts = [
+        {
+            label: 'LinkedIn',
+            icon: <FaLinkedin size={20} />,
+            href: 'https://www.linkedin.com/in/alejandro-manuel-jerez-melgar-735836289/',
+            title: 'Ver perfil de LinkedIn'
+        },
+        {
+            label: 'Gmail',
+            icon: <SiGmail size={20} />,
+            href: 'mailto:alemanuelj5@gmail.com?subject=Contacto desde portfolio&body=Hola Alejandro,',
+            title: 'Enviar correo'
+        },
+        {
+            label: 'GitHub',
+            icon: <FaGithub size={20} />,
+            href: 'https://github.com/alemanuel18',
+            title: 'Ver perfil de GitHub'
+        }
+    ];
+
+    const handleContact = (contact) => {
+        window.open(contact.href, '_blank', 'noopener,noreferrer');
+    };
+
+
     return (
         <motion.div
             className="about-me"
@@ -32,7 +59,6 @@ export default function AboutMe() {
             <div className="about-split">
                 <motion.div className="about-left" variants={leftVariants}>
                     <div className="profile-pic-container">
-                        {/* Aquí va la imagen real de perfil */}
                         <div className="profile-filter"></div>
                         <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '2rem' }}>
                             [ IMAGE SIGNAL LOST ]
@@ -45,11 +71,22 @@ export default function AboutMe() {
 
                     <div className="about-meta">
                         <span><strong>DESARROLLADOR:</strong> WEB FULL-STACK</span>
-                        <span><strong>CONTACTO:</strong> [EMAIL_ADDRESS]</span>
-                        <span><strong>STATUS:</strong>JUNIOR</span>
-                        <span><strong>GIT</strong> https://github.com/alemanuel178</span>
+                        <span><strong>STATUS:</strong> JUNIOR</span>
                         <span><strong>ESPECIALIDAD:</strong> FRONTEND & UI/UX</span>
+                    </div>
 
+                    <div className="about-contacts">
+                        {contacts.map((contact) => (
+                            <CyberButton
+                                key={contact.label}
+                                title={contact.label}
+                                onClick={() => handleContact(contact)}
+                            >
+                                <span className="contact-btn-inner">
+                                    {contact.icon}
+                                </span>
+                            </CyberButton>
+                        ))}
                     </div>
 
                     <div className="about-bio">

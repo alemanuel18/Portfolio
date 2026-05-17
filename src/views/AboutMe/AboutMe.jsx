@@ -45,14 +45,17 @@ export default function AboutMe() {
 
                     <div className="about-meta">
                         <span><strong>DESARROLLADOR:</strong> WEB FULL-STACK</span>
+                        <span><strong>CONTACTO:</strong> [EMAIL_ADDRESS]</span>
                         <span><strong>STATUS:</strong>JUNIOR</span>
-                        <span><strong>SPECIALTY:</strong> FRONTEND & UI/UX</span>
+                        <span><strong>GIT</strong> https://github.com/alemanuel178</span>
+                        <span><strong>ESPECIALIDAD:</strong> FRONTEND & UI/UX</span>
+
                     </div>
 
                     <div className="about-bio">
                         <p>
-                            Desarrollador enfocado en la creación de interfaces dinámicas y experiencias de usuario inmersivas.
-                            Capacitado en React, Vite, y diseño moderno.
+                            Desarrollador FULL-STACK, especializado en interfaces dinámicas y experiencias de usuario inmersivas.
+                            Especializado en React, HTML, CSS, JavaScript, TypeScript y diseño moderno.
                         </p>
                     </div>
                 </motion.div>

@@ -42,7 +42,7 @@ function TrianglePattern({ hover }) {
             // Alternamos entre un gris muy tenue y algo ligeramente más oscuro
             const isEven = c % 2 === 0;
             fillColor = isEven ? '80,110,140' : '60,90,120';
-            fillOpacity = isEven ? 0.08 : 0.12; // Muy bajo → casi invisible
+            fillOpacity = isEven ? 0.05 : 0.09; // Muy bajo → casi invisible
         }
 
         tris.push(
@@ -74,7 +74,7 @@ function TrianglePattern({ hover }) {
                 width={BTN_W}
                 height={BTN_H}
                 fill="none"
-                stroke={hover ? 'rgba(36,84,124,0.9)' : 'rgba(80,130,175,0.15)'}
+                stroke={hover ? 'rgba(36,84,124,0.9)' : 'rgba(80,130,175,0.03)'}
                 strokeWidth="1"
             />
         </svg>

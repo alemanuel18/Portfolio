@@ -1,0 +1,82 @@
+.cyber-image {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  /* El fondo oscuro se ve mientras carga la imagen */
+  background: var(--cyber-dark);
+}
+
+/* Imagen base — ocupa todo el contenedor */
+.cyber-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.35s ease;
+}
+
+/* Leve desaturación en reposo */
+.cyber-image__img {
+  filter: saturate(0.85) contrast(1.05);
+}
+
+/* Hover en modo interactivo: imagen más vívida */
+.cyber-image--interactive:hover .cyber-image__img {
+  filter: saturate(1.1) contrast(1.1) brightness(1.05);
+}
+
+/* Overlay azul Detroit para el efecto de foco */
+.cyber-image__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 51, 79, 0.55) 0%,
+    rgba(25, 72, 114, 0.40) 50%,
+    rgba(36, 84, 124, 0.30) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Patrón de triángulos SVG — siempre encima */
+.cyber-image__triangles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  /* mix-blend-mode hace que los triángulos interactúen con la imagen */
+  mix-blend-mode: screen;
+}
+
+/* Línea de acento inferior (marca registrada del estilo Detroit) */
+.cyber-image__accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--cyber-primary) 30%,
+    rgba(36, 84, 124, 0.6) 70%,
+    transparent 100%
+  );
+  z-index: 4;
+}
+
+/* Efecto de borde brillante en hover interactivo */
+.cyber-image--interactive {
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(36, 84, 124, 0.2);
+  transition: box-shadow 0.35s ease;
+}
+
+.cyber-image--interactive:hover {
+  box-shadow:
+    inset 0 0 0 1px rgba(36, 84, 124, 0.7),
+    0 0 20px rgba(36, 84, 124, 0.25);
+}

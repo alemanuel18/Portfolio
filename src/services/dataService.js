@@ -4,8 +4,24 @@ const mockData = {
         { id: 1, name: 'ALEJANDRO JEREZ', developer: 'WEB FULL-STACK', status: 'JUNIOR', especialidad: 'FRONTEND & UI/UX', description: 'Desarrollador FULL-STACK, especializado en interfaces dinámicas y experiencias de usuario inmersivas. Especializado en React, HTML, CSS, JavaScript, TypeScript y diseño moderno.', img: '/image/aboutme/about0.webp' }
     ],
     projects: [
-        { id: 1, title: 'Project Eden', tech: 'React, Node, MongoDB', desc: 'A cybernetic garden for androids.' },
-        { id: 2, title: 'Kamski Protocol', tech: 'Python, AI, TensorFlow', desc: 'Emergency override system designed by Elijah Kamski.' }
+        {
+            id: 1,
+            title: 'Project Eden',
+            tech: 'React, Node, MongoDB',
+            desc: 'A cybernetic garden for androids.',
+            img: '/image/projects/project1.png',
+            repo: 'https://github.com/alemanuel18/project-eden',
+            demo: ''
+        },
+        {
+            id: 2,
+            title: 'Kamski Protocol',
+            tech: 'Python, AI, TensorFlow',
+            desc: 'Emergency override system designed by Elijah Kamski.',
+            img: '/image/projects/project2.png',
+            repo: 'https://github.com/alemanuel18/kamski-protocol',
+            demo: 'https://kamski.vercel.app'
+        }
     ],
     experience: [
         { id: 1, role: 'Técnico de Soporte TI', company: 'Procuraduría De Los Derechos Humanos', year: '2023', img: '/image/experience/exp1.png', desc: 'Técnico de TI, encargado de dar soporte y preparar hardware y software, para los trabajadores de la institución.' },

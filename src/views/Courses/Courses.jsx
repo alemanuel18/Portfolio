@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import MagazineLayout from '../../components/MagazineLayout/MagazineLayout';
+import CyberImage from '../../components/CyberImage/CyberImage';
 import { useCyber } from '../../context/CyberContext';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Courses.css';
@@ -45,21 +46,20 @@ export default function Courses() {
                 onSelect={setSelected}
                 renderLabel={(item) => item.title}
                 renderDetail={(item) => (
-                    <>
+                    <div className="course-detail">
                         <h2 className="detail-title">{item.title}</h2>
                         <div className="detail-platform">PLATAFORMA: {item.platform}</div>
                         <p className="detail-desc">{item.desc}</p>
-                        {/* Imagen del diploma/certificado */}
+
+                        {/* Imagen del diploma / certificado */}
                         {item.img && (
-                            <div className="diploma-container">
-                                <img
-                                    src={item.img}
-                                    alt={`Diploma de ${item.title}`}
-                                    className="diploma-img"
-                                />
-                            </div>
+                            <CyberImage
+                                src={item.img}
+                                alt={`Diploma de ${item.title}`}
+                                className="diploma-img"
+                            />
                         )}
-                    </>
+                    </div>
                 )}
             />
 

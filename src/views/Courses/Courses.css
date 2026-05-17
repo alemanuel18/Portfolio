@@ -6,41 +6,41 @@
   height: 100vh;
 }
 
-/* Estilos del panel de detalle de cursos */
+/* Contenedor del panel de detalle */
+.course-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.detail-title {
+  font-size: 2rem;
+  color: var(--cyber-dark);
+  margin: 0;
+  letter-spacing: 2px;
+}
+
 .detail-platform {
   font-family: monospace;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--cyber-primary);
   letter-spacing: 1px;
-  margin-bottom: 16px;
   border-left: 3px solid var(--cyber-primary);
-  padding-left: 12px;
+  padding-left: 10px;
 }
 
 .detail-desc {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--cyber-gray);
-  line-height: 1.8;
-  margin-bottom: 20px;
+  line-height: 1.75;
+  margin: 0;
 }
 
-/* Contenedor del diploma/certificado */
-.diploma-container {
-  margin-top: 16px;
-  border: 1px solid var(--cyber-border);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%);
-}
-
+/* Imagen del diploma con clip-path para dar forma trapezoidal */
 .diploma-img {
   width: 100%;
-  height: auto;
-  display: block;
-  filter: grayscale(20%) contrast(1.05);
-  transition: filter 0.3s ease;
-}
-
-.diploma-img:hover {
-  filter: grayscale(0%) contrast(1.1);
+  height: 220px;
+  margin-top: 6px;
+  clip-path: polygon(2% 0, 100% 0, 98% 100%, 0% 100%);
 }

@@ -6,44 +6,49 @@
   height: 100vh;
 }
 
-/* Estilos del panel de detalle (shared via MagazineLayout) */
+/* Contenedor del panel de detalle */
+.project-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Logo / imagen del proyecto */
+.project-detail-img {
+  width: 100%;
+  height: 180px;
+  margin-bottom: 4px;
+}
+
+/* Metadatos del proyecto */
 .detail-title {
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: var(--cyber-dark);
-  margin: 0 0 12px 0;
+  margin: 0;
   letter-spacing: 2px;
 }
 
 .detail-tech {
   font-family: monospace;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--cyber-primary);
   letter-spacing: 1px;
-  margin-bottom: 20px;
   border-left: 3px solid var(--cyber-primary);
-  padding-left: 12px;
+  padding-left: 10px;
 }
 
 .detail-desc {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--cyber-gray);
-  line-height: 1.8;
-  margin-bottom: 24px;
+  line-height: 1.75;
+  margin: 0;
 }
 
-.detail-link {
-  display: inline-block;
-  color: var(--cyber-primary);
-  font-family: var(--font-cyber);
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  text-decoration: none;
-  border: 1px solid var(--cyber-primary);
-  padding: 8px 16px;
-  transition: background 0.2s, color 0.2s;
-}
-
-.detail-link:hover {
-  background: var(--cyber-primary);
-  color: var(--cyber-white);
+/* Botones de acción (repo / demo) */
+.project-detail-links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 4px;
 }

@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import MagazineLayout from '../../components/MagazineLayout/MagazineLayout';
+import { FaGithub } from 'react-icons/fa';
+import CyberImage from '../../components/CyberImage/CyberImage';
+import CyberButton from '../../components/CyberButton/CyberButton';
 import { useCyber } from '../../context/CyberContext';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Projects.css';
@@ -45,21 +48,38 @@ export default function Projects() {
                 onSelect={setSelected}
                 renderLabel={(item) => item.title}
                 renderDetail={(item) => (
-                    <>
+                    <div className="project-detail">
+                        {/* Logo / imagen del proyecto */}
+                        {item.img && (
+                            <CyberImage
+                                src={item.img}
+                                alt={item.title}
+                                className="project-detail-img"
+                            />
+                        )}
+
                         <h2 className="detail-title">{item.title}</h2>
                         <div className="detail-tech">STACK: {item.tech}</div>
                         <p className="detail-desc">{item.desc}</p>
-                        {item.link && (
-                            <a
-                                className="detail-link"
-                                href={item.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                [ VER REPOSITORIO ]
-                            </a>
-                        )}
-                    </>
+
+                        {/* Botones de navegación al proyecto */}
+                        <div className="project-detail-links">
+                            {item.repo && (
+                                <CyberButton
+                                    onClick={() => window.open(item.repo, '_blank', 'noopener,noreferrer')}
+                                >
+                                    <FaGithub size={20} />
+                                </CyberButton>
+                            )}
+                            {item.demo && (
+                                <CyberButton
+                                    onClick={() => window.open(item.demo, '_blank', 'noopener,noreferrer')}
+                                >
+                                    [ VER DEMO ]
+                                </CyberButton>
+                            )}
+                        </div>
+                    </div>
                 )}
             />
 

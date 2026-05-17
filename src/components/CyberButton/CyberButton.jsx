@@ -5,7 +5,7 @@ import './CyberButton.css';
 
 const BTN_W = 150;
 const BTN_H = 44;
-const COLS = 6;
+const COLS = 5;
 const ROWS = 1;
 
 /*

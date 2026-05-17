@@ -4,43 +4,20 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { SiGmail } from 'react-icons/si';
 import BackButton from '../../components/BackButton/BackButton';
 import { useCyber } from '../../context/CyberContext';
-import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import CyberButton from '../../components/CyberButton/CyberButton';
 import './AboutMe.css';
 
 export default function AboutMe() {
-    const [loading, setLoading] = useState(true);
+    const [setLoading] = useState(true);
     const [data, setData] = useState(null);
     const { fetchCyberData } = useCyber();
-    const [selectedAboutMe, setSelectedAboutMe] = useState(null);
 
     useEffect(() => {
         playNavigare();
         fetchCyberData('aboutme').then(res => {
             setData(res[0]);
-            setLoading(false);
         });
     }, []);
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: 0.8, staggerChildren: 0.2 } },
-        exit: { opacity: 0, x: 50, transition: { duration: 0.3 } }
-    };
-
-    const leftVariants = {
-        hidden: { opacity: 0, x: -50 },
-        visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
-    };
-
-    const rightVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-    };
-
-
-
-    if (loading) return <LoadingScreen />;
 
     const contacts = [
         {
@@ -65,6 +42,22 @@ export default function AboutMe() {
 
     const handleContact = (contact) => {
         window.open(contact.href, '_blank', 'noopener,noreferrer');
+    };
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { duration: 0.8, staggerChildren: 0.2 } },
+        exit: { opacity: 0, x: 50, transition: { duration: 0.3 } }
+    };
+
+    const leftVariants = {
+        hidden: { opacity: 0, x: -50 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
+    };
+
+    const rightVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
     };
 
 

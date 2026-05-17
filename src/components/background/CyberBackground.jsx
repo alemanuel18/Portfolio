@@ -36,11 +36,11 @@ export default function CyberBackground() {
 
             // Paleta de tonos fríos muy sutiles
             const tones = [
-                'rgba(200, 220, 240, 0.35)',
-                'rgba(215, 230, 248, 0.28)',
-                'rgba(185, 210, 235, 0.22)',
-                'rgba(230, 242, 255, 0.40)',
-                'rgba(210, 228, 245, 0.18)',
+                'rgba(200, 220, 240, 0.15)',
+                'rgba(215, 230, 248, 0.08)',
+                'rgba(185, 210, 235, 0.02)',
+                'rgba(230, 242, 255, 0.20)',
+                'rgba(210, 228, 245, 0.08)',
             ];
 
             for (let row = -1; row < rows; row++) {
@@ -58,7 +58,7 @@ export default function CyberBackground() {
                     tc.fillStyle = tones[(row * cols + col * 2) % tones.length];
                     tc.fill();
                     // Borde muy sutil
-                    tc.strokeStyle = 'rgba(150, 190, 230, 0.12)';
+                    tc.strokeStyle = 'rgba(150, 190, 230, 0.05)';
                     tc.lineWidth = 0.8;
                     tc.stroke();
 
@@ -70,7 +70,7 @@ export default function CyberBackground() {
                     tc.closePath();
                     tc.fillStyle = tones[(row * cols + col * 2 + 1) % tones.length];
                     tc.fill();
-                    tc.strokeStyle = 'rgba(150, 190, 230, 0.10)';
+                    tc.strokeStyle = 'rgba(150, 190, 230, 0.04)';
                     tc.lineWidth = 0.8;
                     tc.stroke();
                 }

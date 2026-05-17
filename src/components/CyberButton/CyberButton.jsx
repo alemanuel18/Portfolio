@@ -74,14 +74,14 @@ function TrianglePattern({ hover }) {
             <rect
                 width={BTN_W}
                 height={BTN_H}
-                fill={hover ? 'rgba(0,90,190,0.18)' : 'rgba(170,205,235,0.07)'}
+                fill={hover ? 'rgba(0,90,190,0.40)' : 'rgba(170,205,235,0.07)'}
             />
             {buildTriangles(hover)}
             <rect
                 width={BTN_W}
                 height={BTN_H}
                 fill="none"
-                stroke={hover ? 'rgba(0,170,255,0.5)' : 'rgba(130,175,220,0.18)'}
+                stroke={hover ? 'rgba(0,170,255,0.55)' : 'rgba(130,175,220,0.18)'}
                 strokeWidth="0.8"
             />
         </svg>

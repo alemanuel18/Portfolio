@@ -10,7 +10,7 @@ import './Studies.css';
 export default function Studies() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
-    const { fetchCyberData } = useCyber();
+    const { fetchCyberData, t } = useCyber();
     const { playNavigare } = useCyberSound();
 
     useEffect(() => {
@@ -21,27 +21,17 @@ export default function Studies() {
         });
     }, []);
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: 0.5 } },
-        exit: { opacity: 0, transition: { duration: 0.3 } }
-    };
-
     if (loading) return <LoadingScreen />;
 
     return (
         <motion.div
             className="studies-view"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.5 } }}
+            exit={{ opacity: 0, transition: { duration: 0.3 } }}
         >
-            <h1 className="studies-title">ESTUDIOS</h1>
-
-            {/* labelField='degree', subField='institution' para el modelo de estudios */}
+            <h1 className="studies-title">{t.studies.title}</h1>
             <CyberTimeline items={data} labelField="degree" subField="institution" />
-
             <BackButton />
         </motion.div>
     );

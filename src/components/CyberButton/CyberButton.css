@@ -54,7 +54,7 @@
   letter-spacing: 2.5px;
   text-transform: uppercase;
   /* Inactivo: texto oscuro para leer sobre fondo casi transparente */
-  color: rgba(30, 50, 75, 0.80);
+  color: var(--cyber-text-btn-off);
   pointer-events: none;
   white-space: nowrap;
   transition: color 0.2s ease, text-shadow 0.2s ease;
@@ -63,6 +63,6 @@
 /* Activo: texto claro sobre fondo azul oscuro */
 .cyber-button--active .cyber-button__label,
 .cyber-button:hover .cyber-button__label {
-  color: rgba(220, 240, 255, 0.97);
-  text-shadow: 0 0 8px rgba(36, 84, 124, 0.6);
+  color: var(--cyber-text-btn-on);
+  text-shadow: 0 0 8px var(--cyber-overlay-accent);
 }

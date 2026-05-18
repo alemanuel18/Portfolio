@@ -62,7 +62,7 @@
     to right,
     transparent 0%,
     var(--cyber-primary) 30%,
-    rgba(36, 84, 124, 0.6) 70%,
+    var(--cyber-overlay-accent) 70%,
     transparent 100%
   );
   z-index: 4;

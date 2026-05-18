@@ -10,7 +10,7 @@ import './Experience.css';
 export default function Experience() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
-    const { fetchCyberData } = useCyber();
+    const { fetchCyberData, t } = useCyber();
     const { playNavigare } = useCyberSound();
 
     useEffect(() => {
@@ -21,27 +21,17 @@ export default function Experience() {
         });
     }, []);
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: 0.5 } },
-        exit: { opacity: 0, transition: { duration: 0.3 } }
-    };
-
     if (loading) return <LoadingScreen />;
 
     return (
         <motion.div
             className="experience-view"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.5 } }}
+            exit={{ opacity: 0, transition: { duration: 0.3 } }}
         >
-            <h1 className="experience-title">EXPERIENCIA</h1>
-
-            {/* labelField='role', subField='company' — valores por defecto */}
+            <h1 className="experience-title">{t.experience.title}</h1>
             <CyberTimeline items={data} labelField="role" subField="company" />
-
             <BackButton />
         </motion.div>
     );

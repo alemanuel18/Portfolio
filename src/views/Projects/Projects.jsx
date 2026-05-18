@@ -14,7 +14,7 @@ export default function Projects() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [selected, setSelected] = useState(null);
-    const { fetchCyberData } = useCyber();
+    const { fetchCyberData, t } = useCyber();
     const { playNavigare } = useCyberSound();
 
     useEffect(() => {
@@ -25,31 +25,24 @@ export default function Projects() {
         });
     }, []);
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: 0.5 } },
-        exit: { opacity: 0, transition: { duration: 0.3 } }
-    };
-
     if (loading) return <LoadingScreen />;
 
     return (
         <motion.div
             className="projects-view"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.5 } }}
+            exit={{ opacity: 0, transition: { duration: 0.3 } }}
         >
             <MagazineLayout
-                title="PROYECTOS"
+                title={t.projects.title}
                 items={data}
                 selected={selected}
                 onSelect={setSelected}
+                selectHint={t.projects.selectFile}
                 renderLabel={(item) => item.title}
                 renderDetail={(item) => (
                     <div className="project-detail">
-                        {/* Logo / imagen del proyecto */}
                         {item.img && (
                             <CyberImage
                                 src={item.img}
@@ -59,10 +52,9 @@ export default function Projects() {
                         )}
 
                         <h2 className="detail-title">{item.title}</h2>
-                        <div className="detail-tech">STACK: {item.tech}</div>
+                        <div className="detail-tech">{t.projects.stack}: {item.tech}</div>
                         <p className="detail-desc">{item.desc}</p>
 
-                        {/* Botones de navegación al proyecto */}
                         <div className="project-detail-links">
                             {item.repo && (
                                 <CyberButton
@@ -75,7 +67,7 @@ export default function Projects() {
                                 <CyberButton
                                     onClick={() => window.open(item.demo, '_blank', 'noopener,noreferrer')}
                                 >
-                                    [ VER DEMO ]
+                                    {t.projects.demo}
                                 </CyberButton>
                             )}
                         </div>

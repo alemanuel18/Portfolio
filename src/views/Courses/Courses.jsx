@@ -12,7 +12,7 @@ export default function Courses() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [selected, setSelected] = useState(null);
-    const { fetchCyberData } = useCyber();
+    const { fetchCyberData, t } = useCyber();
     const { playNavigare } = useCyberSound();
 
     useEffect(() => {
@@ -23,41 +23,34 @@ export default function Courses() {
         });
     }, []);
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: 0.5 } },
-        exit: { opacity: 0, transition: { duration: 0.3 } }
-    };
-
     if (loading) return <LoadingScreen />;
 
     return (
         <motion.div
             className="courses-view"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.5 } }}
+            exit={{ opacity: 0, transition: { duration: 0.3 } }}
         >
             <MagazineLayout
-                title="CURSOS"
+                title={t.courses.title}
                 items={data}
                 selected={selected}
                 onSelect={setSelected}
+                selectHint={t.courses.selectFile}
                 renderLabel={(item) => item.title}
                 renderDetail={(item) => (
                     <div className="course-detail">
                         <h2 className="detail-title">{item.title}</h2>
-                        <div className="detail-platform">PLATAFORMA: {item.platform}</div>
+                        <div className="detail-platform">{t.courses.platform}: {item.platform}</div>
                         <p className="detail-desc">{item.desc}</p>
 
-                        {/* Botón al diploma/certificado */}
                         {item.link && (
                             <div className="course-detail-link">
                                 <CyberButton
                                     onClick={() => window.open(item.link, '_blank', 'noopener,noreferrer')}
                                 >
-                                    [ VER DIPLOMA ]
+                                    {t.courses.diploma}
                                 </CyberButton>
                             </div>
                         )}

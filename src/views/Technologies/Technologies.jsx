@@ -12,7 +12,7 @@ export default function Technologies() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [expanded, setExpanded] = useState(null);
-    const { fetchCyberData } = useCyber();
+    const { fetchCyberData, t } = useCyber();
     const { playNavigare, playHover, playInOption } = useCyberSound();
 
     useEffect(() => {
@@ -23,33 +23,30 @@ export default function Technologies() {
         });
     }, []);
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: 0.8, staggerChildren: 0.2 } },
-        exit: { opacity: 0, x: 50, transition: { duration: 0.3 } }
-    };
-
     const handleToggle = (id) => {
         playInOption();
         setExpanded(prev => prev === id ? null : id);
     };
+
+    const focusedIndex = expanded !== null
+        ? data.findIndex(tech => tech.id === expanded)
+        : null;
 
     if (loading) return <LoadingScreen />;
 
     return (
         <motion.div
             className="tech-view"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: 0.8 } }}
+            exit={{ opacity: 0, x: 50, transition: { duration: 0.3 } }}
         >
             <CyberSplitPanel
                 leftClipPath="polygon(15% 0, 100% 0, 85% 100%, 0 100%)"
-                leftContent={<TechCarousel items={data} />}
+                leftContent={<TechCarousel items={data} focusedIndex={focusedIndex} />}
                 rightContent={
                     <>
-                        <h1 className="tech-title">TECNOLOGÍAS</h1>
+                        <h1 className="tech-title">{t.technologies.title}</h1>
 
                         <div className="tech-meta">
                             {data.map((tech, index) => (
@@ -61,18 +58,16 @@ export default function Technologies() {
                                     initial={{ opacity: 0, x: 20 }}
                                     animate={{ opacity: 1, x: 0, transition: { delay: index * 0.07 } }}
                                 >
-                                    {/* Cabecera siempre visible */}
                                     <div className="tech-item-header">
-                                        <span className="tech-item-name">{tech.name}</span>
-                                        <div className="tech-item-right">
-                                            <span className="tech-status">[{tech.level}]</span>
+                                        <div className="tech-item-left">
                                             <span className="tech-item-chevron">
-                                                {expanded === tech.id ? '▲' : '▼'}
+                                                {expanded === tech.id ? '▼' : '▶'}
                                             </span>
+                                            <span className="tech-item-name">{tech.name}</span>
                                         </div>
+                                        <span className="tech-status">[{tech.level}]</span>
                                     </div>
 
-                                    {/* Detalle expandible: why + how */}
                                     <AnimatePresence>
                                         {expanded === tech.id && (
                                             <motion.div
@@ -84,13 +79,13 @@ export default function Technologies() {
                                             >
                                                 {tech.why && (
                                                     <div className="tech-detail-block">
-                                                        <span className="tech-detail-label">POR QUÉ</span>
+                                                        <span className="tech-detail-label">{t.technologies.why}</span>
                                                         <p>{tech.why}</p>
                                                     </div>
                                                 )}
                                                 {tech.how && (
                                                     <div className="tech-detail-block">
-                                                        <span className="tech-detail-label">CÓMO LO USÉ</span>
+                                                        <span className="tech-detail-label">{t.technologies.how}</span>
                                                         <p>{tech.how}</p>
                                                     </div>
                                                 )}

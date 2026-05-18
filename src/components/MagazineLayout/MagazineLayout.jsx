@@ -1,17 +1,20 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCyberSound } from '../../hooks/useCyberSound';
+import { useCyber } from '../../context/CyberContext';
 import './MagazineLayout.css';
 
 /**
- * @param {string}   title         - Título de la vista (ej. "PROYECTOS").
- * @param {Object[]} items         - Lista de elementos a mostrar en el panel izquierdo.
- * @param {Object}   selected      - El elemento actualmente seleccionado.
- * @param {Function} onSelect      - Callback cuando se hace clic en un item.
- * @param {Function} renderLabel   - Función (item) => JSX para el texto de cada tarjeta.
- * @param {Function} renderDetail  - Función (selected) => JSX para el panel derecho.
+ * @param {string}   title        - Título del panel izquierdo.
+ * @param {Object[]} items        - Lista de elementos.
+ * @param {Object}   selected     - Elemento seleccionado actualmente.
+ * @param {Function} onSelect     - Callback al hacer clic en un item.
+ * @param {Function} renderLabel  - (item) => texto/JSX de la tarjeta.
+ * @param {Function} renderDetail - (selected) => contenido del panel derecho.
+ * @param {string}   selectHint   - Texto del placeholder (se sobreescribe con i18n si se omite).
  */
-export default function MagazineLayout({ title, items, selected, onSelect, renderLabel, renderDetail }) {
+export default function MagazineLayout({ title, items, selected, onSelect, renderLabel, renderDetail, selectHint }) {
     const { playHover, playInOption } = useCyberSound();
+    const { t } = useCyber();
 
     const handleSelect = (item) => {
         playInOption();
@@ -20,7 +23,7 @@ export default function MagazineLayout({ title, items, selected, onSelect, rende
 
     return (
         <div className="magazine-layout">
-            {/* Panel izquierdo: lista inclinada */}
+            {/* Panel izquierdo */}
             <div className="magazine-left">
                 <h1 className="magazine-view-title">{title}</h1>
                 <div className="magazine-grid">
@@ -44,7 +47,7 @@ export default function MagazineLayout({ title, items, selected, onSelect, rende
                 </div>
             </div>
 
-            {/* Panel derecho: detalle dinámico */}
+            {/* Panel derecho */}
             <div className="magazine-right">
                 <AnimatePresence mode="wait">
                     {selected ? (
@@ -67,7 +70,9 @@ export default function MagazineLayout({ title, items, selected, onSelect, rende
                             exit={{ opacity: 0 }}
                         >
                             <div className="placeholder-icon">↖</div>
-                            <div className="placeholder-text">SELECT A FILE</div>
+                            <div className="placeholder-text">
+                                {selectHint || t.projects?.selectFile || 'SELECT A FILE'}
+                            </div>
                         </motion.div>
                     )}
                 </AnimatePresence>

@@ -35,8 +35,13 @@
 }
 
 /* Ocultar scrollbar pero mantener scroll */
-.tech-meta::-webkit-scrollbar { width: 3px; }
-.tech-meta::-webkit-scrollbar-thumb { background: rgba(0, 136, 204, 0.3); }
+.tech-meta::-webkit-scrollbar {
+  width: 3px;
+}
+
+.tech-meta::-webkit-scrollbar-thumb {
+  background: var(--cyber-bg-primary-lg);
+}
 
 /* ─── Ítem de tecnología ─────────────────────── */
 .tech-item {
@@ -48,12 +53,12 @@
 }
 
 .tech-item:hover {
-  background: rgba(0, 136, 204, 0.05);
+  background: var(--cyber-bg-primary-xs);
   border-left-color: var(--cyber-primary);
 }
 
 .tech-item--open {
-  background: rgba(0, 136, 204, 0.07);
+  background: var(--cyber-bg-primary-sm);
   border-left-color: var(--cyber-primary);
 }
 
@@ -71,11 +76,11 @@
   font-size: 0.92rem;
 }
 
-.tech-item-right {
+/* Grupo izquierdo: flecha + nombre pegados */
+.tech-item-left {
   display: flex;
   align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
+  gap: 6px;
 }
 
 .tech-status {

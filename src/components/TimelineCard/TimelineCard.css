@@ -6,7 +6,7 @@
   color: var(--cyber-dark);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  box-shadow: var(--cyber-shadow-md);
   clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
   cursor: pointer;
   z-index: 1;
@@ -92,7 +92,7 @@
   line-height: 1.6;
   color: var(--cyber-gray);
   overflow: hidden;
-  border-top: 1px solid rgba(0, 136, 204, 0.15);
+  border-top: 1px solid var(--cyber-border-primary);
   padding-top: 8px;
 }
 

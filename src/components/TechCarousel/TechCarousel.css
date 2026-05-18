@@ -2,45 +2,52 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  gap: 5rem;
   width: 100%;
+  height: 100%;
   z-index: 3;
   position: relative;
 }
 
-.tech-carousel-label {
-  font-family: monospace;
-  font-size: 0.75rem;
-  letter-spacing: 3px;
-  color: rgba(255, 255, 255, 0.55);
-  text-transform: uppercase;
+/* ─── Satélites (prev / next) ──────────────────── */
+.tc-satellite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.28;
 }
 
-/* Pista vertical de íconos */
-.tech-carousel-track {
+/* ─── Zona del ícono central ────────────────────── */
+.tc-center-wrapper {
+  /* Altura fija para que el layout no salte durante la animación */
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.tc-center {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
+  position: absolute;
 }
 
-/* Cada slot de ícono */
-.tc-slot {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  cursor: default;
-}
-
+/* ─── Íconos ────────────────────────────────────── */
 .tc-icon {
-  font-size: 4rem;
-  color: rgba(255, 255, 255, 0.65);
-  transition: color 0.3s ease;
   display: block;
+  transition: color 0.3s ease;
 }
 
-/* Slot activo (centro del carrusel) */
-.tc-slot--active .tc-icon {
+.tc-icon--active {
+  font-size: 6rem;
   color: var(--cyber-white);
+}
+
+.tc-icon--dim {
+  font-size: 4.5rem;
+  color: var(--cyber-gray);
 }

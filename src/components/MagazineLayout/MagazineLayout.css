@@ -15,8 +15,8 @@
   position: relative;
   /* Inclinación diagonal derecha del panel */
   clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
-  background: rgba(255, 255, 255, 0.6);
-  border-right: 2px solid rgba(0, 136, 204, 0.15);
+  background: var(--cyber-bg-glass);
+  border-right: 2px solid var(--cyber-border-primary);
   backdrop-filter: blur(6px);
 }
 
@@ -50,7 +50,7 @@
   color: var(--cyber-dark);
   cursor: pointer;
   border-left: 3px solid transparent;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px var(--cyber-shadow-sm);
   transition: border-color 0.2s, background 0.2s, color 0.2s;
 }
 

@@ -43,7 +43,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 20px 44px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--cyber-shadow-lg);
   /* Trapezoid fuerte igual al diseño original */
   clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
   cursor: pointer;
@@ -55,7 +55,7 @@
   background: var(--cyber-primary);
   color: var(--cyber-white);
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 136, 204, 0.3);
+  box-shadow: 0 20px 40px var(--cyber-bg-primary-lg);
 }
 
 .timeline-node:hover .timeline-dot {

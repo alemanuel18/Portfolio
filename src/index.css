@@ -1,18 +1,61 @@
 :root {
-  /* CyberLife Light Colors */
-  --cyber-primary: rgba(0, 170, 255, 0.55);
-  --cyber-primary-glow: rgba(0, 90, 190, 0.40);
-  --cyber-dark: #1a222d;
-  --cyber-white: #ffffff;
-  --cyber-gray: #8292a5;
-  --cyber-border: rgba(0, 0, 0, 0.1);
-  --cyber-bg: #eef5fb;
-  /* Very light clinical blue/white */
+  /* ═══════════════════════════════════════
+     CyberLife Design Tokens
+     Todos los colores de la UI se definen aquí.
+     ═══════════════════════════════════════ */
+
+  /* Paleta primaria (azul CyberLife) */
+  --cyber-primary:        rgba(0, 170, 255, 0.55);
+  --cyber-primary-solid:  #00aaff;
+  --cyber-primary-glow:   rgba(0, 90, 190, 0.40);
+
+  /* Paleta Detroit (azules oscuros para botones y overlays) */
+  --cyber-detroit-1:  #0f334f;
+  --cyber-detroit-2:  #193f5f;
+  --cyber-detroit-3:  #194872;
+  --cyber-detroit-4:  #24547c;
+  --cyber-detroit-5:  #1a4060;
+  --cyber-detroit-6:  #0d2e47;
+
+  /* Neutros */
+  --cyber-dark:    #1a222d;
+  --cyber-white:   #ffffff;
+  --cyber-gray:    #8292a5;
+  --cyber-bg:      #eef5fb;
+
+  /* Bordes */
+  --cyber-border:          rgba(0, 0, 0, 0.10);
+  --cyber-border-primary:  rgba(0, 136, 204, 0.15);
+
+  /* Fondos con transparencia */
+  --cyber-bg-glass:        rgba(255, 255, 255, 0.60);
+  --cyber-bg-primary-xs:   rgba(0, 136, 204, 0.05);
+  --cyber-bg-primary-sm:   rgba(0, 136, 204, 0.07);
+  --cyber-bg-primary-md:   rgba(0, 136, 204, 0.20);
+  --cyber-bg-primary-lg:   rgba(0, 136, 204, 0.30);
+
+  /* Sombras */
+  --cyber-shadow-sm:  0 2px 8px rgba(0, 0, 0, 0.06);
+  --cyber-shadow-md:  0 8px 24px rgba(0, 0, 0, 0.10);
+  --cyber-shadow-lg:  0 10px 30px rgba(0, 0, 0, 0.10);
+  --cyber-shadow-xl:  0 20px 40px rgba(0, 136, 204, 0.30);
+
+  /* Texto */
+  --cyber-text-light:    rgba(255, 255, 255, 0.60);
+  --cyber-text-btn-off:  rgba(30, 50, 75, 0.80);
+  --cyber-text-btn-on:   rgba(220, 240, 255, 0.97);
+
+  /* Overlay azul Detroit (CyberImage) */
+  --cyber-overlay-1:  rgba(15, 51, 79, 0.55);
+  --cyber-overlay-2:  rgba(25, 72, 114, 0.40);
+  --cyber-overlay-3:  rgba(36, 84, 124, 0.30);
+  --cyber-overlay-accent: rgba(36, 84, 124, 0.60);
 
   /* Fonts */
   --font-cyber: 'Jura', sans-serif;
 }
 
+/* ─── Reset y base ─────────────────────────────── */
 body {
   margin: 0;
   padding: 0;
@@ -20,7 +63,6 @@ body {
   color: var(--cyber-dark);
   font-family: var(--font-cyber);
   overflow: hidden;
-  /* Evitar scroll global, manejar en vistas */
   user-select: none;
 }
 
@@ -32,99 +74,49 @@ body {
   flex-direction: column;
 }
 
-/* Tipografía global */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* ─── Tipografía global ────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin: 0;
 }
 
-/* Efecto de borde brillante (Glow) */
+/* ─── Utilidades ───────────────────────────────── */
 .cyber-glow {
   box-shadow: 0 0 10px var(--cyber-primary-glow), inset 0 0 10px var(--cyber-primary-glow);
 }
 
-/* Utilidades para formas trapezoidales y diagonales */
-.skew-container {
-  transform: skewX(-10deg);
-}
+.skew-container { transform: skewX(-10deg); }
+.skew-content   { transform: skewX(10deg); }
 
-.skew-content {
-  transform: skewX(10deg);
-  /* Para enderezar el texto dentro de un contenedor inclinado */
-}
+.cyber-clip     { clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); }
+.cyber-clip-alt { clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%); }
 
-.cyber-clip {
-  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-}
-
-.cyber-clip-alt {
-  clip-path: polygon(0 0, 90% 0, 100% 100%, 10% 100%);
-}
-
-/* Animaciones */
+/* ─── Animaciones ──────────────────────────────── */
 @keyframes pulse {
-  0% {
-    opacity: 0.8;
-  }
-
-  50% {
-    opacity: 1;
-    text-shadow: 0 0 8px var(--cyber-white);
-  }
-
-  100% {
-    opacity: 0.8;
-  }
+  0%   { opacity: 0.8; }
+  50%  { opacity: 1; text-shadow: 0 0 8px var(--cyber-white); }
+  100% { opacity: 0.8; }
 }
-
-.animate-pulse-slow {
-  animation: pulse 3s infinite;
-}
+.animate-pulse-slow { animation: pulse 3s infinite; }
 
 @keyframes scanline {
-  0% {
-    transform: translateY(-100%);
-  }
-
-  100% {
-    transform: translateY(100vh);
-  }
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
 }
-
 .scanline-effect {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 10vh;
+  top: 0; left: 0;
+  width: 100%; height: 10vh;
   background: linear-gradient(to bottom, transparent, rgba(0, 168, 255, 0.05), transparent);
   animation: scanline 8s linear infinite;
   pointer-events: none;
   z-index: 50;
 }
 
-/* Custom Scrollbar minimalista */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--cyber-gray);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--cyber-primary);
-}
+/* ─── Scrollbar minimalista ────────────────────── */
+::-webkit-scrollbar            { width: 6px; height: 6px; }
+::-webkit-scrollbar-track      { background: transparent; }
+::-webkit-scrollbar-thumb      { background: var(--cyber-gray); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--cyber-primary); }

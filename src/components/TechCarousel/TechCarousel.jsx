@@ -8,7 +8,6 @@ import {
 } from 'react-icons/si';
 import './TechCarousel.css';
 
-/** Mapa nombre → ícono de react-icons */
 export const TECH_ICONS = {
     'React': SiReact, 'React (Vite)': SiReact, 'Next.js': SiNextdotjs,
     'TypeScript': SiTypescript, 'JavaScript': SiJavascript,
@@ -20,55 +19,83 @@ export const TECH_ICONS = {
     'Docker': SiDocker, 'Git': SiGit, 'Nginx': SiNginx,
 };
 
-/**
- *
- * @param {Object[]} items   - Arreglo de tecnologías (deben tener `name`)
- * @param {number}  interval - Milisegundos entre rotaciones (default 1800)
- * @param {number}  visible  - Cuántos íconos mostrar a la vez (default 5)
- */
-export default function TechCarousel({ items = [], interval = 1800, visible = 5 }) {
-    const [current, setCurrent] = useState(0);
+const SLIDE = {
+    enter: { opacity: 0, y: 28, scale: 0.7 },
+    center: { opacity: 1, y: 0, scale: 1 },
+    exit: { opacity: 0, y: -28, scale: 0.7 },
+};
 
+/**
+ * @param {Object[]} items       - Arreglo de tecnologías
+ * @param {number}  interval     - ms entre auto-rotaciones
+ * @param {number|null} focusedIndex - Índice a mostrar (override externo)
+ */
+export default function TechCarousel({ items = [], interval = 2200, focusedIndex = null }) {
+    const [current, setCurrent] = useState(0);
+    const [paused, setPaused] = useState(false);
+
+    // Sincronizar con el ítem expandido en el panel derecho
     useEffect(() => {
-        if (items.length === 0) return;
+        if (focusedIndex !== null && focusedIndex >= 0 && focusedIndex < items.length) {
+            setCurrent(focusedIndex);
+            setPaused(true);
+        } else {
+            setPaused(false);
+        }
+    }, [focusedIndex, items.length]);
+
+    // Auto-rotación — se pausa cuando hay un ítem enfocado
+    useEffect(() => {
+        if (paused || items.length === 0) return;
         const timer = setInterval(() => {
             setCurrent(prev => (prev + 1) % items.length);
         }, interval);
         return () => clearInterval(timer);
-    }, [items.length, interval]);
+    }, [paused, items.length, interval]);
 
     if (items.length === 0) return null;
 
-    // Índices circulares de los ítems visibles (current en el centro)
-    const half = Math.floor(visible / 2);
-    const indices = Array.from({ length: visible }, (_, i) => {
-        return (current - half + i + items.length * 10) % items.length;
-    });
+    const tech = items[current];
+    const Icon = TECH_ICONS[tech.name] || SiReact;
+
+    // Íconos satélite: anterior y siguiente
+    const prevTech = items[(current - 1 + items.length) % items.length];
+    const nextTech = items[(current + 1) % items.length];
+    const PrevIcon = TECH_ICONS[prevTech.name] || SiReact;
+    const NextIcon = TECH_ICONS[nextTech.name] || SiReact;
 
     return (
         <div className="tech-carousel">
+            {/* Ícono previo (satélite superior) */}
+            <div className="tc-satellite">
+                <PrevIcon className="tc-icon tc-icon--dim" />
+            </div>
 
-            <div className="tech-carousel-track">
-                {indices.map((idx, pos) => {
-                    const tech = items[idx];
-                    const Icon = TECH_ICONS[tech.name] || SiReact;
-                    const isCenter = pos === half;
-
-                    return (
-                        <motion.div
-                            key={`${idx}-${pos}`}
-                            className={`tc-slot ${isCenter ? 'tc-slot--active' : ''}`}
-                            animate={{
-                                opacity: isCenter ? 1 : Math.max(0.25, 1 - Math.abs(pos - half) * 0.3),
-                                scale: isCenter ? 1.35 : Math.max(0.6, 1 - Math.abs(pos - half) * 0.18),
-                            }}
-                            transition={{ duration: 0.4, ease: 'easeInOut' }}
+            {/* Ícono central con AnimatePresence para crossfade limpio */}
+            <div className="tc-center-wrapper">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={current}
+                        className="tc-center"
+                        variants={SLIDE}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{ duration: 0.35, ease: 'easeInOut' }}
+                    >
+                        <Icon className="tc-icon tc-icon--active" />
+                        <motion.span
+                            className="tc-name"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1, transition: { delay: 0.15 } }}
                         >
-                            <Icon className="tc-icon" />
+                        </motion.span>
+                    </motion.div>
+                </AnimatePresence>
+            </div>
 
-                        </motion.div>
-                    );
-                })}
+            <div className="tc-satellite">
+                <NextIcon className="tc-icon tc-icon--dim" />
             </div>
         </div>
     );

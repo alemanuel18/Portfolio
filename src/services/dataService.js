@@ -5,9 +5,9 @@ const mockData = {
         {
             id: 1,
             name: 'ALEJANDRO JEREZ',
-            developer: 'WEB FULL-STACK',       developer_en: 'WEB FULL-STACK',
+            developer: 'WEB FULL-STACK', developer_en: 'WEB FULL-STACK',
             status: 'JUNIOR',
-            especialidad: 'FRONTEND & UI/UX',  especialidad_en: 'FRONTEND & UI/UX',
+            especialidad: 'FRONTEND & UI/UX', especialidad_en: 'FRONTEND & UI/UX',
             description: 'Desarrollador FULL-STACK, especializado en interfaces dinámicas y experiencias de usuario inmersivas. Especializado en React, HTML, CSS, JavaScript, TypeScript y UI/UX',
             description_en: 'FULL-STACK Developer specializing in dynamic interfaces and immersive user experiences. Proficient in React, HTML, CSS, JavaScript, TypeScript, and UI/UX design.',
             img: '/image/aboutme/about0.webp'
@@ -49,16 +49,16 @@ const mockData = {
             desc: 'Ejercicio de React que consume la PokéAPI para mostrar los Pokémon de primera generación.',
             desc_en: 'React exercise consuming the PokéAPI to display first-generation Pokémon.',
             repo: 'https://github.com/alemanuel18/Ejercicio4_React_Pokedex',
-            demo: 'https://swap.jhgo.online/es/login'
+            demo: 'https://ejercicio4-react-pokedex.vercel.app/'
         },
         {
             id: 5,
-            title: 'Calculadora',           title_en: 'Calculator',
+            title: 'Calculadora', title_en: 'Calculator',
             tech: 'React + Vite, TypeScript, CSS, Docker + Docker Compose',
             desc: 'Calculadora con operaciones básicas.',
             desc_en: 'Calculator app with basic arithmetic operations.',
             repo: 'https://github.com/alemanuel18/Lab7_Calculadora',
-            demo: 'https://swap.jhgo.online/es/login'
+            demo: 'https://lab7-calculadora.vercel.app/'
         },
         {
             id: 6,
@@ -67,11 +67,11 @@ const mockData = {
             desc: 'Videojuego de Snake.',
             desc_en: 'Classic Snake video game.',
             repo: 'https://github.com/alemanuel18/Lab6_Snake',
-            demo: 'https://swap.jhgo.online/es/login'
+            demo: 'https://lab6-snake.vercel.app/'
         },
         {
             id: 7,
-            title: 'Sistema de Inventario y Ventas',   title_en: 'Inventory & Sales System',
+            title: 'Sistema de Inventario y Ventas', title_en: 'Inventory & Sales System',
             tech: 'Node.js, MySQL, React + Vite, CSS, SQL, Docker + Docker Compose',
             desc: 'Sistema de inventario y ventas para una tienda minorista. (La mejor rama es db/Proyecto-3).',
             desc_en: 'Inventory and sales system for a retail store. (Best branch: db/Proyecto-3).',
@@ -85,6 +85,7 @@ const mockData = {
             desc: 'Frontend de un sistema para rastrear las series que has visto.',
             desc_en: 'Frontend for a TV-series tracker web app.',
             repo: 'https://github.com/alemanuel18/Proyecto1_Full-Stack_Web_Frontend',
+            demo: 'https://graceful-forgiveness-production-a462.up.railway.app/'
         },
         {
             id: 9,
@@ -93,11 +94,11 @@ const mockData = {
             desc: 'Backend de un sistema para rastrear las series que has visto.',
             desc_en: 'REST API backend for a TV-series tracker, built with Go and PostgreSQL.',
             repo: 'https://github.com/alemanuel18/Proyecto1_Full-Stack_Web_Backend',
-            demo: 'https://swap.jhgo.online/es/login'
+            demo: 'https://graceful-forgiveness-production-a462.up.railway.app/'
         },
         {
             id: 10,
-            title: 'Sistema de Recomendación de Profesores',   title_en: 'Professor Recommendation System',
+            title: 'Sistema de Recomendación de Profesores', title_en: 'Professor Recommendation System',
             tech: 'React, FastAPI',
             desc: 'Frontend de un sistema de recomendación de profesores universitarios, desarrollado con React y conectado a su respectivo backend con FastAPI. Permite a los estudiantes recibir sugerencias personalizadas de profesores según experiencia, calificaciones y áreas de especialidad.',
             desc_en: 'Frontend for a university professor recommendation system built with React and connected to a FastAPI backend. Students receive personalized professor suggestions based on experience, ratings, and subject areas.',
@@ -105,7 +106,7 @@ const mockData = {
         },
         {
             id: 11,
-            title: 'Sistema de Recomendación de Profesores - Backend',   title_en: 'Professor Recommendation System - Backend',
+            title: 'Sistema de Recomendación de Profesores - Backend', title_en: 'Professor Recommendation System - Backend',
             tech: 'Python, Neo4j',
             desc: 'Backend de un sistema de recomendación de profesores universitarios, desarrollado con Python y Poetry para gestión de dependencias. Se conecta a una base de datos de grafos mediante Neo4j.',
             desc_en: 'Backend for the professor recommendation system, built with Python and Poetry for dependency management. Connects to a graph database powered by Neo4j.',
@@ -116,7 +117,7 @@ const mockData = {
     experience: [
         {
             id: 1,
-            role: 'Técnico de Soporte TI',              role_en: 'IT Support Technician',
+            role: 'Técnico de Soporte TI', role_en: 'IT Support Technician',
             company: 'Procuraduría De Los Derechos Humanos',
             year: '2023',
             img: '/image/experience/exp1.png',
@@ -127,16 +128,16 @@ const mockData = {
             id: 2,
             role: 'Maker Assistant',
             company: 'Universidad del Valle de Guatemala',
-            year: '2025 - Presente',             year_en: '2025 - Present',
+            year: '2025 - Presente', year_en: '2025 - Present',
             img: '/image/studies/studies2.png',
             desc: 'Makerspace D-Hive: Maker Assistant encargado del uso y mantenimiento de impresoras 3D Ultimaker, Bambu Lab y Elegoo; cortadora láser y de vinilo.',
             desc_en: 'D-Hive Makerspace: Maker Assistant responsible for operating and maintaining Ultimaker, Bambu Lab, and Elegoo 3D printers, as well as laser and vinyl cutters.'
         },
         {
             id: 3,
-            role: 'Catedrático Auxiliar',            role_en: 'Teaching Assistant',
+            role: 'Catedrático Auxiliar', role_en: 'Teaching Assistant',
             company: 'Universidad del Valle de Guatemala',
-            year: '2026 - Presente',                year_en: '2026 - Present',
+            year: '2026 - Presente', year_en: '2026 - Present',
             img: '/image/studies/studies2.png',
             desc: 'Departamento de Ingeniería en Ciencias de la Computación y TI: auxiliar de laboratorio del curso de Algoritmos y Estructura de Datos.',
             desc_en: 'Department of Computer Science and IT Engineering: laboratory assistant for the Algorithms and Data Structures course.'
@@ -159,7 +160,7 @@ const mockData = {
             degree: 'Ingeniería en Ciencias de la Computación y TI',
             degree_en: 'B.Sc. in Computer Science and IT Engineering',
             institution: 'Universidad del Valle de Guatemala',
-            year: '2024 - Presente',     year_en: '2024 - Present',
+            year: '2024 - Presente', year_en: '2024 - Present',
             img: '/image/studies/studies2.png',
             desc: 'Estudiante de tercer año con beca parcial por parte de la universidad. Reconocimiento académico en los primeros dos años de estudio.',
             desc_en: 'Third-year student with a partial university scholarship. Academic recognition in the first two years of study.'
@@ -169,7 +170,7 @@ const mockData = {
     courses: [
         {
             id: 1,
-            title: 'Curso de React.js',             title_en: 'React.js Course',
+            title: 'Curso de React.js', title_en: 'React.js Course',
             platform: 'Platzi',
             desc: 'Desarrolla aplicaciones web modernas con React. Crea componentes, maneja estado y eventos, aplica hooks, consume APIs, estiliza interfaces y usa TypeScript para mayor seguridad. Conoce las novedades de React 19.',
             desc_en: 'Build modern web applications with React. Create components, manage state and events, apply hooks, consume APIs, style interfaces, and use TypeScript for type safety. Covers React 19 features.',
@@ -177,7 +178,7 @@ const mockData = {
         },
         {
             id: 2,
-            title: 'Curso Profesional de Git y GitHub',    title_en: 'Professional Git & GitHub Course',
+            title: 'Curso Profesional de Git y GitHub', title_en: 'Professional Git & GitHub Course',
             platform: 'Platzi',
             desc: 'Gestiona versiones, colabora en equipo y publica proyectos usando Git y GitHub. Controla ramas, pull requests, releases, seguridad y automatizaciones con herramientas clave de la industria.',
             desc_en: 'Manage versions, collaborate in teams, and publish projects using Git and GitHub. Control branches, pull requests, releases, security, and automations with industry-standard tools.',
@@ -185,7 +186,7 @@ const mockData = {
         },
         {
             id: 3,
-            title: 'Curso de HTML',      title_en: 'HTML Course',
+            title: 'Curso de HTML', title_en: 'HTML Course',
             platform: 'Platzi',
             desc: 'Domina la estructura esencial de las páginas web con HTML. Aprende a escribir código limpio, jerarquizado y funcional. Comprende el rol de HTML en la web moderna y cómo su estructura impacta la accesibilidad, el SEO y la mantenibilidad del sitio.',
             desc_en: 'Master the essential structure of web pages with HTML. Learn to write clean, hierarchical, and functional code. Understand the role of HTML in the modern web and how its structure impacts accessibility, SEO, and site maintainability.',
@@ -193,7 +194,7 @@ const mockData = {
         },
         {
             id: 4,
-            title: 'Reto de 30 Días De JS',     title_en: '30 Days of JS Challenge',
+            title: 'Reto de 30 Días De JS', title_en: '30 Days of JS Challenge',
             platform: 'Platzi',
             desc: 'Durante 6 semanas continuas aprenderás desde 0 las características de JavaScript, con ejercicios prácticos y conceptos nuevos diariamente.',
             desc_en: 'Over 6 continuous weeks, learn JavaScript from scratch with daily practical exercises and new concepts.',
@@ -201,7 +202,7 @@ const mockData = {
         },
         {
             id: 5,
-            title: 'Introducción a la Terminal y Línea de Comandos',    title_en: 'Introduction to the Terminal & Command Line',
+            title: 'Introducción a la Terminal y Línea de Comandos', title_en: 'Introduction to the Terminal & Command Line',
             platform: 'Platzi',
             desc: 'Aprende a utilizar la terminal y la línea de comandos para navegar tu sistema operativo, manipular archivos y directorios, comprender permisos y procesos, y usar herramientas como grep y curl.',
             desc_en: 'Learn to use the terminal and command line to navigate your OS, manipulate files and directories, understand permissions and processes, and use tools like grep and curl.',

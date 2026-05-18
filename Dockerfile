@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 
-RUN npm run dev
+RUN npm run build
 
 FROM nginx:alpine
 
@@ -34,4 +34,7 @@ RUN echo 'server { \
 EXPOSE 80
 
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/bin/sh", "-c", "\
+  echo 'PORTAFOLIO DETROIT ENCONTRADO EN LA WEB'&&\
+  echo 'http://localhost:8080' && \
+  nginx -g 'daemon off;'"]

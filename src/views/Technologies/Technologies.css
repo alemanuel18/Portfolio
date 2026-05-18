@@ -84,7 +84,7 @@
 }
 
 .tech-status {
-  color: var(--cyber-primary);
+  color: var(--cyber-primary-solid);
   font-size: 0.78rem;
 }
 
@@ -110,9 +110,9 @@
 }
 
 .tech-detail-label {
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   letter-spacing: 2px;
-  color: var(--cyber-primary);
+  color: var(--cyber-primary-solid);
   opacity: 0.8;
 }
 

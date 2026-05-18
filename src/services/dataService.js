@@ -109,7 +109,7 @@ const mockData = {
     technologies: [
         {
             id: 1, name: 'React (Vite)', level: 'OPTIMAL',
-            why: 'Ecosistema maduro, componentes reutilizables y un flujo de datos predecible que agiliza el desarrollo de interfaces complejas.',
+            why: 'React es una de las librerias de JavaScript mas utilizadas, por lo que si tengo un error es casi seguro que a alguien mas le ha pasado y hay informacion de sobra para solucionarlo, ademas que el sistema de componentes hace que el codigo sea mas facil de mantener y reutilizar.',
             how: 'Base de todos mis proyectos frontend: Portafolio, Swap, Pokedex, Snake y la Calculadora.'
         },
         {
@@ -170,6 +170,6 @@ export const fetchCyberData = async (key) => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(mockData[key] || []);
-        }, 2000); // 1.2s delay as requested
+        }, 2000);
     });
 };

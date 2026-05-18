@@ -5,6 +5,7 @@ import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import MagazineLayout from '../../components/MagazineLayout/MagazineLayout';
 import CyberButton from '../../components/CyberButton/CyberButton';
 import { useCyber } from '../../context/CyberContext';
+import { useTranslate } from '../../hooks/useTranslate';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Courses.css';
 
@@ -14,6 +15,7 @@ export default function Courses() {
     const [selected, setSelected] = useState(null);
     const { fetchCyberData, t } = useCyber();
     const { playNavigare } = useCyberSound();
+    const tf = useTranslate();
 
     useEffect(() => {
         playNavigare();
@@ -38,12 +40,12 @@ export default function Courses() {
                 selected={selected}
                 onSelect={setSelected}
                 selectHint={t.courses.selectFile}
-                renderLabel={(item) => item.title}
+                renderLabel={(item) => tf(item, 'title')}
                 renderDetail={(item) => (
                     <div className="course-detail">
-                        <h2 className="detail-title">{item.title}</h2>
+                        <h2 className="detail-title">{tf(item, 'title')}</h2>
                         <div className="detail-platform">{t.courses.platform}: {item.platform}</div>
-                        <p className="detail-desc">{item.desc}</p>
+                        <p className="detail-desc">{tf(item, 'desc')}</p>
 
                         {item.link && (
                             <div className="course-detail-link">

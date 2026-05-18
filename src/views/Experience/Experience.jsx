@@ -4,6 +4,7 @@ import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import CyberTimeline from '../../components/CyberTimeline/CyberTimeline';
 import { useCyber } from '../../context/CyberContext';
+import { useTranslate } from '../../hooks/useTranslate';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Experience.css';
 
@@ -12,6 +13,7 @@ export default function Experience() {
     const [data, setData] = useState([]);
     const { fetchCyberData, t } = useCyber();
     const { playNavigare } = useCyberSound();
+    const tf = useTranslate();
 
     useEffect(() => {
         playNavigare();
@@ -23,6 +25,14 @@ export default function Experience() {
 
     if (loading) return <LoadingScreen />;
 
+    // Mapear datos con campos traducidos para el TimelineCard
+    const translated = data.map(item => ({
+        ...item,
+        role:    tf(item, 'role'),
+        year:    tf(item, 'year'),
+        desc:    tf(item, 'desc'),
+    }));
+
     return (
         <motion.div
             className="experience-view"
@@ -31,7 +41,7 @@ export default function Experience() {
             exit={{ opacity: 0, transition: { duration: 0.3 } }}
         >
             <h1 className="experience-title">{t.experience.title}</h1>
-            <CyberTimeline items={data} labelField="role" subField="company" />
+            <CyberTimeline items={translated} labelField="role" subField="company" />
             <BackButton />
         </motion.div>
     );

@@ -4,6 +4,7 @@ import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import CyberTimeline from '../../components/CyberTimeline/CyberTimeline';
 import { useCyber } from '../../context/CyberContext';
+import { useTranslate } from '../../hooks/useTranslate';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Studies.css';
 
@@ -12,6 +13,7 @@ export default function Studies() {
     const [data, setData] = useState([]);
     const { fetchCyberData, t } = useCyber();
     const { playNavigare } = useCyberSound();
+    const tf = useTranslate();
 
     useEffect(() => {
         playNavigare();
@@ -23,6 +25,13 @@ export default function Studies() {
 
     if (loading) return <LoadingScreen />;
 
+    const translated = data.map(item => ({
+        ...item,
+        degree: tf(item, 'degree'),
+        year:   tf(item, 'year'),
+        desc:   tf(item, 'desc'),
+    }));
+
     return (
         <motion.div
             className="studies-view"
@@ -31,7 +40,7 @@ export default function Studies() {
             exit={{ opacity: 0, transition: { duration: 0.3 } }}
         >
             <h1 className="studies-title">{t.studies.title}</h1>
-            <CyberTimeline items={data} labelField="degree" subField="institution" />
+            <CyberTimeline items={translated} labelField="degree" subField="institution" />
             <BackButton />
         </motion.div>
     );

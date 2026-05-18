@@ -5,6 +5,7 @@ import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import CyberSplitPanel from '../../components/CyberSplitPanel/CyberSplitPanel';
 import TechCarousel from '../../components/TechCarousel/TechCarousel';
 import { useCyber } from '../../context/CyberContext';
+import { useTranslate } from '../../hooks/useTranslate';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Technologies.css';
 
@@ -14,6 +15,7 @@ export default function Technologies() {
     const [expanded, setExpanded] = useState(null);
     const { fetchCyberData, t } = useCyber();
     const { playNavigare, playHover, playInOption } = useCyberSound();
+    const tf = useTranslate();
 
     useEffect(() => {
         playNavigare();
@@ -80,13 +82,13 @@ export default function Technologies() {
                                                 {tech.why && (
                                                     <div className="tech-detail-block">
                                                         <span className="tech-detail-label">{t.technologies.why}</span>
-                                                        <p>{tech.why}</p>
+                                                        <p>{tf(tech, 'why')}</p>
                                                     </div>
                                                 )}
                                                 {tech.how && (
                                                     <div className="tech-detail-block">
                                                         <span className="tech-detail-label">{t.technologies.how}</span>
-                                                        <p>{tech.how}</p>
+                                                        <p>{tf(tech, 'how')}</p>
                                                     </div>
                                                 )}
                                             </motion.div>

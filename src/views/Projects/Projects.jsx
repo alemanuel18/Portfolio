@@ -7,6 +7,7 @@ import { FaGithub } from 'react-icons/fa';
 import CyberImage from '../../components/CyberImage/CyberImage';
 import CyberButton from '../../components/CyberButton/CyberButton';
 import { useCyber } from '../../context/CyberContext';
+import { useTranslate } from '../../hooks/useTranslate';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Projects.css';
 
@@ -16,6 +17,7 @@ export default function Projects() {
     const [selected, setSelected] = useState(null);
     const { fetchCyberData, t } = useCyber();
     const { playNavigare } = useCyberSound();
+    const tf = useTranslate();
 
     useEffect(() => {
         playNavigare();
@@ -40,20 +42,20 @@ export default function Projects() {
                 selected={selected}
                 onSelect={setSelected}
                 selectHint={t.projects.selectFile}
-                renderLabel={(item) => item.title}
+                renderLabel={(item) => tf(item, 'title')}
                 renderDetail={(item) => (
                     <div className="project-detail">
                         {item.img && (
                             <CyberImage
                                 src={item.img}
-                                alt={item.title}
+                                alt={tf(item, 'title')}
                                 className="project-detail-img"
                             />
                         )}
 
-                        <h2 className="detail-title">{item.title}</h2>
+                        <h2 className="detail-title">{tf(item, 'title')}</h2>
                         <div className="detail-tech">{t.projects.stack}: {item.tech}</div>
-                        <p className="detail-desc">{item.desc}</p>
+                        <p className="detail-desc">{tf(item, 'desc')}</p>
 
                         <div className="project-detail-links">
                             {item.repo && (

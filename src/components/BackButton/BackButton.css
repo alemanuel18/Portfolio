@@ -1,7 +1,7 @@
 .back-button-container {
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: clamp(22px, 4vw, 40px);
+  right: clamp(22px, 4vw, 40px);
   display: flex;
   align-items: center;
   gap: 15px;
@@ -10,8 +10,8 @@
 }
 
 .back-icon {
-  width: 40px;
-  height: 40px;
+  width: clamp(36px, 5vw, 40px);
+  height: clamp(36px, 5vw, 40px);
   border: 2px solid var(--cyber-dark);
   border-radius: 50%;
   display: flex;
@@ -32,6 +32,12 @@
   text-transform: uppercase;
   color: var(--cyber-dark);
   transition: color 0.3s ease;
+}
+
+@media (max-width: 520px) {
+  .back-text {
+    display: none;
+  }
 }
 
 .back-button-container:hover .back-icon {

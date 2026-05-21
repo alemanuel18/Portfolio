@@ -53,9 +53,24 @@
 
   /* Fonts */
   --font-cyber: 'Jura', sans-serif;
+
+  /* Layout */
+  --page-padding: clamp(24px, 4vw, 60px);
+  --page-padding-bottom: clamp(64px, 8vh, 80px);
 }
 
 /* ─── Reset y base ─────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -69,6 +84,7 @@ body {
 #root {
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   position: relative;
   display: flex;
   flex-direction: column;

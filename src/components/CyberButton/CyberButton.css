@@ -5,8 +5,8 @@
   cursor: pointer;
   outline: none;
   padding: 0;
-  width: 200px;
-  height: 46px;
+  width: clamp(150px, 12.5vw, 200px);
+  height: clamp(42px, 5vh, 46px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -58,6 +58,17 @@
   pointer-events: none;
   white-space: nowrap;
   transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+@media (max-width: 760px) {
+  .cyber-button {
+    width: min(100%, 220px);
+  }
+
+  .cyber-button__label {
+    font-size: 0.82rem;
+    letter-spacing: 1.8px;
+  }
 }
 
 /* Activo: texto claro sobre fondo azul oscuro */

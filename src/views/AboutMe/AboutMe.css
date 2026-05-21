@@ -4,11 +4,13 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 50px;
+  padding: var(--page-padding);
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* Placeholder de foto de perfil */
@@ -23,7 +25,7 @@
 
 /* ─── Panel derecho (via CyberSplitPanel .csp-right) ─── */
 .about-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   color: var(--cyber-dark);
   margin: 0 0 20px 0;
   border-bottom: 2px solid var(--cyber-primary);
@@ -52,10 +54,26 @@
   gap: 12px;
   margin-bottom: 20px;
   justify-content: center;
+  flex-wrap: wrap;
+}
+
+.about-contacts .cyber-button {
+  width: clamp(76px, 7vw, 92px);
 }
 
 .about-bio {
-  font-size: 1rem;
+  font-size: clamp(0.92rem, 1.1vw, 1rem);
   line-height: 1.7;
   color: var(--cyber-dark);
+}
+
+@media (max-width: 940px) {
+  .about-me {
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .about-meta span {
+    gap: 18px;
+  }
 }

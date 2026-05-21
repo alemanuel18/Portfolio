@@ -4,6 +4,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 /* Contenedor del panel de detalle */
@@ -15,7 +17,7 @@
 }
 
 .detail-title {
-  font-size: 2rem;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
   color: var(--cyber-dark);
   margin: 0;
   letter-spacing: 2px;
@@ -31,7 +33,7 @@
 }
 
 .detail-desc {
-  font-size: 0.95rem;
+  font-size: clamp(0.88rem, 1.1vw, 0.95rem);
   color: var(--cyber-gray);
   line-height: 1.75;
   margin: 0;
@@ -40,4 +42,10 @@
 /* Contenedor del botón al diploma */
 .course-detail-link {
   margin-top: 8px;
+}
+
+@media (max-width: 940px) {
+  .courses-view {
+    overflow-y: auto;
+  }
 }

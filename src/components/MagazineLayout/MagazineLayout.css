@@ -7,10 +7,10 @@
 
 /* ─── Panel Izquierdo ─────────────────────────────────────── */
 .magazine-left {
-  width: 42%;
+  width: clamp(340px, 40vw, 560px);
   display: flex;
   flex-direction: column;
-  padding: 60px 0 60px 60px;
+  padding: clamp(32px, 5vw, 60px) 0 clamp(48px, 8vh, 84px) clamp(24px, 5vw, 60px);
   background: transparent;
   position: relative;
   /* Inclinación diagonal derecha del panel */
@@ -21,10 +21,10 @@
 }
 
 .magazine-view-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   color: var(--cyber-dark);
-  margin: 0 0 30px 0;
-  letter-spacing: 4px;
+  margin: 0 0 clamp(18px, 3vh, 30px) 0;
+  letter-spacing: clamp(2px, 0.45vw, 4px);
   border-bottom: 2px solid var(--cyber-primary);
   padding-bottom: 10px;
   display: inline-block;
@@ -35,7 +35,7 @@
   flex-direction: column;
   gap: 10px;
   overflow-y: auto;
-  padding-right: 40px;
+  padding-right: clamp(20px, 4vw, 40px);
   scrollbar-width: thin;
   scrollbar-color: var(--cyber-gray) transparent;
 }
@@ -45,7 +45,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 20px;
+  padding: 14px clamp(16px, 2vw, 20px);
   background: var(--cyber-white);
   color: var(--cyber-dark);
   cursor: pointer;
@@ -62,7 +62,7 @@
 }
 
 .magazine-card-label {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
   font-weight: 600;
   letter-spacing: 1px;
 }
@@ -84,13 +84,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px;
+  min-width: 0;
+  padding: clamp(28px, 5vw, 60px);
   position: relative;
 }
 
 .magazine-detail {
   width: 100%;
   max-width: 600px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 /* Placeholder sin selección */
@@ -107,7 +111,36 @@
 }
 
 .placeholder-text {
-  font-size: 1.2rem;
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
   letter-spacing: 4px;
   font-family: var(--font-cyber);
+}
+
+@media (max-width: 940px) {
+  .magazine-layout {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .magazine-left {
+    width: 100%;
+    max-height: 46vh;
+    padding: 28px 24px 24px;
+    clip-path: none;
+  }
+
+  .magazine-grid {
+    padding-right: 8px;
+  }
+
+  .magazine-right {
+    flex: 1;
+    align-items: flex-start;
+    padding: 28px 24px 96px;
+  }
+
+  .magazine-detail {
+    max-width: none;
+    max-height: none;
+  }
 }

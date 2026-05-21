@@ -4,16 +4,18 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 50px;
+  padding: var(--page-padding);
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* ─── Panel derecho ───────────────────────────── */
 .tech-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   color: var(--cyber-dark);
   margin: 0 0 20px 0;
   border-bottom: 2px solid var(--cyber-primary);
@@ -30,7 +32,7 @@
   flex-direction: column;
   gap: 4px;
   overflow-y: auto;
-  max-height: 65vh;
+  max-height: min(65vh, 560px);
   padding-right: 4px;
 }
 
@@ -121,4 +123,22 @@
   font-size: 0.84rem;
   line-height: 1.6;
   color: var(--cyber-gray);
+}
+
+@media (max-height: 780px) {
+  .tech-meta {
+    max-height: 52vh;
+  }
+}
+
+@media (max-width: 940px) {
+  .tech-view {
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .tech-meta {
+    max-height: none;
+    padding-bottom: 12px;
+  }
 }

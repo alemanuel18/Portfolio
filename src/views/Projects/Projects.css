@@ -4,6 +4,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
 }
 
 /* Contenedor del panel de detalle */
@@ -17,13 +19,13 @@
 /* Logo / imagen del proyecto */
 .project-detail-img {
   width: 100%;
-  height: 180px;
+  height: clamp(130px, 24vh, 180px);
   margin-bottom: 4px;
 }
 
 /* Metadatos del proyecto */
 .detail-title {
-  font-size: 2rem;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
   color: var(--cyber-dark);
   margin: 0;
   letter-spacing: 2px;
@@ -39,7 +41,7 @@
 }
 
 .detail-desc {
-  font-size: 0.95rem;
+  font-size: clamp(0.88rem, 1.1vw, 0.95rem);
   color: var(--cyber-gray);
   line-height: 1.75;
   margin: 0;
@@ -51,4 +53,10 @@
   gap: 14px;
   flex-wrap: wrap;
   margin-top: 4px;
+}
+
+@media (max-width: 940px) {
+  .projects-view {
+    overflow-y: auto;
+  }
 }

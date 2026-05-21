@@ -1,7 +1,7 @@
 .timeline-card {
   position: relative;
-  min-width: 260px;
-  max-width: 300px;
+  min-width: clamp(230px, 25vw, 260px);
+  max-width: min(300px, 82vw);
   background: var(--cyber-white);
   color: var(--cyber-dark);
   display: flex;
@@ -18,7 +18,7 @@
 .tc-img-wrapper {
   position: relative;
   width: 100%;
-  height: 130px;
+  height: clamp(105px, 17vh, 130px);
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -59,7 +59,7 @@
 
 /* ─── Cuerpo ───────────────────────────────────────── */
 .tc-body {
-  padding: 14px 28px 18px 22px;
+  padding: 14px clamp(22px, 3vw, 28px) 18px 22px;
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -73,7 +73,7 @@
 }
 
 .tc-label {
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
   font-weight: 700;
   letter-spacing: 0.5px;
   color: var(--cyber-dark);
@@ -81,7 +81,7 @@
 }
 
 .tc-sub {
-  font-size: 0.82rem;
+  font-size: clamp(0.76rem, 1vw, 0.82rem);
   color: var(--cyber-gray);
   letter-spacing: 0.5px;
 }

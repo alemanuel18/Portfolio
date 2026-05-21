@@ -6,7 +6,7 @@ import CyberButton from '../../components/CyberButton/CyberButton';
 import './Options.css';
 
 export default function Options() {
-    const { lang, setLang, volume, setVolume, t } = useCyber();
+    const { lang, setLang, volume, setVolume, visualPerformance, setVisualPerformance, t } = useCyber();
     const { playInOption } = useCyberSound();
 
 
@@ -25,6 +25,13 @@ export default function Options() {
 
     const handleVolumeChange = (e) => {
         setVolume(parseFloat(e.target.value));
+    };
+
+    const handlePerformanceChange = (mode) => {
+        if (visualPerformance !== mode) {
+            playInOption();
+            setVisualPerformance(mode);
+        }
     };
 
     return (
@@ -66,6 +73,30 @@ export default function Options() {
                             onClick={() => handleLangChange('en')}
                         >
                             EN
+                        </CyberButton>
+                    </div>
+                </div>
+
+                <div className="option-group">
+                    <span className="option-label">{t.options.performance}</span>
+                    <div className="performance-toggle">
+                        <CyberButton
+                            active={visualPerformance === 'auto'}
+                            onClick={() => handlePerformanceChange('auto')}
+                        >
+                            {t.options.performanceAuto}
+                        </CyberButton>
+                        <CyberButton
+                            active={visualPerformance === 'high'}
+                            onClick={() => handlePerformanceChange('high')}
+                        >
+                            {t.options.performanceHigh}
+                        </CyberButton>
+                        <CyberButton
+                            active={visualPerformance === 'low'}
+                            onClick={() => handlePerformanceChange('low')}
+                        >
+                            {t.options.performanceLow}
                         </CyberButton>
                     </div>
                 </div>

@@ -70,9 +70,14 @@
   box-shadow: 0 0 10px var(--cyber-primary-glow);
 }
 
-.lang-toggle {
+.lang-toggle,
+.performance-toggle {
   display: flex;
   gap: 20px;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.performance-toggle {
+  gap: 14px;
 }

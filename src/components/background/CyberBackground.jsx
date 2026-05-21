@@ -1,40 +1,73 @@
 import { useEffect, useRef } from 'react';
+import { useCyber } from '../../context/CyberContext';
+
+const PROFILES = {
+    high: {
+        scale: 1,
+        fps: 60,
+        panelCols: 3,
+        panelRows: 2,
+        particles: 25,
+        staticOnly: false,
+    },
+    low: {
+        scale: 0.65,
+        fps: 24,
+        panelCols: 2,
+        panelRows: 1,
+        particles: 8,
+        staticOnly: false,
+    },
+    static: {
+        scale: 0.6,
+        fps: 0,
+        panelCols: 0,
+        panelRows: 0,
+        particles: 0,
+        staticOnly: true,
+    },
+};
+
+function resolveProfile(mode) {
+    if (mode === 'high') return PROFILES.high;
+    if (mode === 'low') return PROFILES.low;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) return PROFILES.static;
+
+    const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
+    const compactViewport = Math.min(window.innerWidth, window.innerHeight) < 760;
+    const lowMemory = navigator.deviceMemory && navigator.deviceMemory <= 4;
+    const lowCpu = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+
+    if (coarsePointer || compactViewport || lowMemory || lowCpu) {
+        return PROFILES.low;
+    }
+
+    return PROFILES.high;
+}
 
 export default function CyberBackground() {
     const canvasRef = useRef(null);
+    const { visualPerformance } = useCyber();
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { alpha: false });
+        const profile = resolveProfile(visualPerformance);
         let animationFrameId;
+        let lastFrameTime = 0;
         let t = 0;
-        let panels = [], particles = [];
-        // Offscreen canvas para el patrón de triángulos (se dibuja una sola vez)
-        let triCanvas = null;
+        let width = 0;
+        let height = 0;
+        let panels = [];
+        let particles = [];
+        let staticCanvas = null;
 
-        const resize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            buildScene();
-            buildTrianglePattern();
-        };
-
-        /**
-         * Construye un offscreen canvas con una teselación de triángulos
-         * estilo Detroit: Become Human — triángulos grandes, colores fríos sutiles.
-         */
-        const buildTrianglePattern = () => {
-            const W = canvas.width, H = canvas.height;
-            triCanvas = document.createElement('canvas');
-            triCanvas.width = W;
-            triCanvas.height = H;
-            const tc = triCanvas.getContext('2d');
-
-            const size = 180; // Tamaño base del triángulo
-            const cols = Math.ceil(W / size) + 2;
-            const rows = Math.ceil(H / (size * 0.866)) + 2; // 0.866 = sin(60°)
-
-            // Paleta de tonos fríos muy sutiles
+        const drawTrianglePattern = (targetCtx) => {
+            const size = profile.staticOnly ? 220 : 180;
+            const cols = Math.ceil(width / size) + 2;
+            const rows = Math.ceil(height / (size * 0.866)) + 2;
             const tones = [
                 'rgba(200, 220, 240, 0.15)',
                 'rgba(215, 230, 248, 0.08)',
@@ -47,57 +80,73 @@ export default function CyberBackground() {
                 for (let col = -1; col < cols; col++) {
                     const x = col * size;
                     const y = row * size * 0.866;
-                    const offset = (row % 2 === 0) ? 0 : size / 2;
+                    const offset = row % 2 === 0 ? 0 : size / 2;
 
-                    // Triángulo superior (▲)
-                    tc.beginPath();
-                    tc.moveTo(x + offset, y);
-                    tc.lineTo(x + offset + size, y);
-                    tc.lineTo(x + offset + size / 2, y + size * 0.866);
-                    tc.closePath();
-                    tc.fillStyle = tones[(row * cols + col * 2) % tones.length];
-                    tc.fill();
-                    // Borde muy sutil
-                    tc.strokeStyle = 'rgba(150, 190, 230, 0.05)';
-                    tc.lineWidth = 0.8;
-                    tc.stroke();
+                    targetCtx.beginPath();
+                    targetCtx.moveTo(x + offset, y);
+                    targetCtx.lineTo(x + offset + size, y);
+                    targetCtx.lineTo(x + offset + size / 2, y + size * 0.866);
+                    targetCtx.closePath();
+                    targetCtx.fillStyle = tones[(row * cols + col * 2) % tones.length];
+                    targetCtx.fill();
+                    targetCtx.strokeStyle = 'rgba(150, 190, 230, 0.05)';
+                    targetCtx.lineWidth = 0.8;
+                    targetCtx.stroke();
 
-                    // Triángulo inferior (▼) — el espacio entre dos ▲
-                    tc.beginPath();
-                    tc.moveTo(x + offset + size, y);
-                    tc.lineTo(x + offset + size * 1.5, y + size * 0.866);
-                    tc.lineTo(x + offset + size / 2, y + size * 0.866);
-                    tc.closePath();
-                    tc.fillStyle = tones[(row * cols + col * 2 + 1) % tones.length];
-                    tc.fill();
-                    tc.strokeStyle = 'rgba(150, 190, 230, 0.04)';
-                    tc.lineWidth = 0.8;
-                    tc.stroke();
+                    targetCtx.beginPath();
+                    targetCtx.moveTo(x + offset + size, y);
+                    targetCtx.lineTo(x + offset + size * 1.5, y + size * 0.866);
+                    targetCtx.lineTo(x + offset + size / 2, y + size * 0.866);
+                    targetCtx.closePath();
+                    targetCtx.fillStyle = tones[(row * cols + col * 2 + 1) % tones.length];
+                    targetCtx.fill();
+                    targetCtx.strokeStyle = 'rgba(150, 190, 230, 0.04)';
+                    targetCtx.lineWidth = 0.8;
+                    targetCtx.stroke();
                 }
             }
         };
 
+        const buildStaticScene = () => {
+            staticCanvas = document.createElement('canvas');
+            staticCanvas.width = canvas.width;
+            staticCanvas.height = canvas.height;
+            const staticCtx = staticCanvas.getContext('2d', { alpha: false });
+            staticCtx.setTransform(profile.scale, 0, 0, profile.scale, 0, 0);
+
+            const bg = staticCtx.createLinearGradient(0, 0, width, height);
+            bg.addColorStop(0, '#f0f7fd');
+            bg.addColorStop(0.5, '#e0eff9');
+            bg.addColorStop(1, '#e8f4ff');
+            staticCtx.fillStyle = bg;
+            staticCtx.fillRect(0, 0, width, height);
+            drawTrianglePattern(staticCtx);
+        };
+
         const buildScene = () => {
-            const W = canvas.width, H = canvas.height;
-            const cols = 3, rows = 2;
-            const pw = W / cols, ph = H / rows;
             panels = [];
-            for (let r = 0; r <= rows; r++) {
-                for (let c = 0; c <= cols; c++) {
-                    panels.push({
-                        cx: c * pw + (Math.random() - 0.5) * pw * 0.3,
-                        cy: r * ph + (Math.random() - 0.5) * ph * 0.3,
-                        baseW: pw * (0.7 + Math.random() * 0.5),
-                        baseH: ph * (0.7 + Math.random() * 0.5),
-                        phase: Math.random() * Math.PI * 2,
-                        speed: 0.003 + Math.random() * 0.004,
-                        brightness: 0.6 + Math.random() * 0.4,
-                    });
+            if (!profile.staticOnly) {
+                const panelWidth = width / profile.panelCols;
+                const panelHeight = height / profile.panelRows;
+
+                for (let r = 0; r <= profile.panelRows; r++) {
+                    for (let c = 0; c <= profile.panelCols; c++) {
+                        panels.push({
+                            cx: c * panelWidth + (Math.random() - 0.5) * panelWidth * 0.3,
+                            cy: r * panelHeight + (Math.random() - 0.5) * panelHeight * 0.3,
+                            baseW: panelWidth * (0.7 + Math.random() * 0.5),
+                            baseH: panelHeight * (0.7 + Math.random() * 0.5),
+                            phase: Math.random() * Math.PI * 2,
+                            speed: 0.003 + Math.random() * 0.004,
+                            brightness: 0.6 + Math.random() * 0.4,
+                        });
+                    }
                 }
             }
-            particles = Array.from({ length: 25 }, () => ({
-                x: Math.random() * W,
-                y: Math.random() * H,
+
+            particles = Array.from({ length: profile.particles }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
                 r: 6 + Math.random() * 18,
                 sx: (Math.random() - 0.5) * 0.15,
                 sy: -(0.04 + Math.random() * 0.2),
@@ -105,69 +154,96 @@ export default function CyberBackground() {
             }));
         };
 
-        const animate = () => {
-            const W = canvas.width, H = canvas.height;
-            ctx.clearRect(0, 0, W, H);
+        const resize = () => {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = Math.max(1, Math.floor(width * profile.scale));
+            canvas.height = Math.max(1, Math.floor(height * profile.scale));
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
+            ctx.setTransform(profile.scale, 0, 0, profile.scale, 0, 0);
+            buildStaticScene();
+            buildScene();
+        };
 
-            // 1. Base gradient
-            const bg = ctx.createLinearGradient(0, 0, W, H);
-            bg.addColorStop(0, '#f0f7fd');
-            bg.addColorStop(0.5, '#e0eff9');
-            bg.addColorStop(1, '#e8f4ff');
-            ctx.fillStyle = bg;
-            ctx.fillRect(0, 0, W, H);
+        const render = () => {
+            ctx.clearRect(0, 0, width, height);
 
-            // 2. Patrón de triángulos estático (offscreen)
-            if (triCanvas) {
-                ctx.drawImage(triCanvas, 0, 0);
+            if (staticCanvas) {
+                ctx.drawImage(staticCanvas, 0, 0, width, height);
             }
 
-            // 3. Animated light panels (reflections encima del patrón)
-            panels.forEach(p => {
-                const pulse = Math.sin(t * p.speed + p.phase);
-                const alpha = (0.35 + pulse * 0.15) * p.brightness;
-                const hw = (p.baseW / 2) * (1 + pulse * 0.08);
-                const hh = (p.baseH / 2) * (1 + Math.cos(t * p.speed * 0.7 + p.phase) * 0.06);
-                const rg = ctx.createRadialGradient(p.cx, p.cy, 0, p.cx, p.cy, Math.max(hw, hh));
-                rg.addColorStop(0, `rgba(255,255,255,${(alpha * 0.9).toFixed(3)})`);
-                rg.addColorStop(0.4, `rgba(210,235,255,${(alpha * 0.4).toFixed(3)})`);
-                rg.addColorStop(1, `rgba(180,215,255,0)`);
-                ctx.save();
+            panels.forEach((panel) => {
+                const pulse = Math.sin(t * panel.speed + panel.phase);
+                const alpha = (0.35 + pulse * 0.15) * panel.brightness;
+                const halfWidth = (panel.baseW / 2) * (1 + pulse * 0.08);
+                const halfHeight = (panel.baseH / 2) * (1 + Math.cos(t * panel.speed * 0.7 + panel.phase) * 0.06);
+                const radial = ctx.createRadialGradient(panel.cx, panel.cy, 0, panel.cx, panel.cy, Math.max(halfWidth, halfHeight));
+                radial.addColorStop(0, `rgba(255,255,255,${(alpha * 0.9).toFixed(3)})`);
+                radial.addColorStop(0.4, `rgba(210,235,255,${(alpha * 0.4).toFixed(3)})`);
+                radial.addColorStop(1, 'rgba(180,215,255,0)');
                 ctx.beginPath();
-                ctx.ellipse(p.cx, p.cy, hw, hh, 0, 0, Math.PI * 2);
-                ctx.fillStyle = rg;
+                ctx.ellipse(panel.cx, panel.cy, halfWidth, halfHeight, 0, 0, Math.PI * 2);
+                ctx.fillStyle = radial;
                 ctx.fill();
-                ctx.restore();
             });
 
-            // 4. Bokeh particles
-            particles.forEach(p => {
-                const pg = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-                pg.addColorStop(0, `rgba(0,136,204,${p.o})`);
-                pg.addColorStop(1, `rgba(0,136,204,0)`);
+            particles.forEach((particle) => {
+                const radial = ctx.createRadialGradient(particle.x, particle.y, 0, particle.x, particle.y, particle.r);
+                radial.addColorStop(0, `rgba(0,136,204,${particle.o})`);
+                radial.addColorStop(1, 'rgba(0,136,204,0)');
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = pg;
+                ctx.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
+                ctx.fillStyle = radial;
                 ctx.fill();
-                p.x += p.sx; p.y += p.sy;
-                if (p.y < -30) p.y = H + 30;
-                if (p.x < -30) p.x = W + 30;
-                if (p.x > W + 30) p.x = -30;
+
+                particle.x += particle.sx;
+                particle.y += particle.sy;
+                if (particle.y < -30) particle.y = height + 30;
+                if (particle.x < -30) particle.x = width + 30;
+                if (particle.x > width + 30) particle.x = -30;
             });
 
             t++;
+        };
+
+        const animate = (time = 0) => {
+            const frameInterval = 1000 / profile.fps;
+
+            if (time - lastFrameTime >= frameInterval) {
+                render();
+                lastFrameTime = time;
+            }
+
             animationFrameId = requestAnimationFrame(animate);
         };
 
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                cancelAnimationFrame(animationFrameId);
+                return;
+            }
+            lastFrameTime = 0;
+            if (!profile.staticOnly) {
+                animationFrameId = requestAnimationFrame(animate);
+            }
+        };
+
         window.addEventListener('resize', resize);
+        document.addEventListener('visibilitychange', handleVisibilityChange);
         resize();
-        animate();
+        render();
+
+        if (!profile.staticOnly) {
+            animationFrameId = requestAnimationFrame(animate);
+        }
 
         return () => {
             window.removeEventListener('resize', resize);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
             cancelAnimationFrame(animationFrameId);
         };
-    }, []);
+    }, [visualPerformance]);
 
     return (
         <canvas

@@ -20,6 +20,10 @@ const translations = {
             title:  'CONFIGURACIÓN DE SISTEMA',
             volume: 'VOLUMEN DE AUDIO',
             lang:   'IDIOMA DE INTERFAZ',
+            performance: 'RENDIMIENTO VISUAL',
+            performanceAuto: 'AUTO',
+            performanceHigh: 'ALTO',
+            performanceLow: 'LIGERO',
             back:   'VOLVER',
         },
         // ── Loading ─────────────────────────────────────
@@ -75,6 +79,10 @@ const translations = {
             title:  'SYSTEM CONFIGURATION',
             volume: 'AUDIO VOLUME',
             lang:   'INTERFACE LANGUAGE',
+            performance: 'VISUAL PERFORMANCE',
+            performanceAuto: 'AUTO',
+            performanceHigh: 'HIGH',
+            performanceLow: 'LIGHT',
             back:   'BACK',
         },
         // ── Loading ─────────────────────────────────────
@@ -118,11 +126,12 @@ const translations = {
 export function CyberProvider({ children }) {
     const [lang, setLang] = useState('es');
     const [volume, setVolume] = useState(0.5);
+    const [visualPerformance, setVisualPerformance] = useState('auto');
 
     const t = translations[lang];
 
     return (
-        <CyberContext.Provider value={{ lang, setLang, volume, setVolume, t, fetchCyberData }}>
+        <CyberContext.Provider value={{ lang, setLang, volume, setVolume, visualPerformance, setVisualPerformance, t, fetchCyberData }}>
             {children}
         </CyberContext.Provider>
     );

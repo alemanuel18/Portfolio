@@ -4,11 +4,11 @@ import { useCyber } from '../context/CyberContext';
 export function useCyberSound() {
     const { volume } = useCyber();
 
-    const hoverAudioRef = useRef(new Audio('/audio/interaccion/hobber/hobber.wav'));
-    const inOptionAudioRef = useRef(new Audio('/audio/interaccion/inOption/inOption.wav'));
-    const navigareAudioRef = useRef(new Audio('/audio/interaccion/navigate/navigate.wav'));
-    const openPortfolioAudioRef = useRef(new Audio('/audio/interaccion/openPortfolio/openPortfolio.wav'));
-    const outOptionAudioRef = useRef(new Audio('/audio/interaccion/outOption/outOption.wav'));
+    const hoverAudioRef = useRef(new Audio('/audio/interaccion/hobber/hobber.ogg'));
+    const inOptionAudioRef = useRef(new Audio('/audio/interaccion/inOption/inOption.ogg'));
+    const navigareAudioRef = useRef(new Audio('/audio/interaccion/navigate/navigate.ogg'));
+    const openPortfolioAudioRef = useRef(new Audio('/audio/interaccion/openPortfolio/openPortfolio.ogg'));
+    const outOptionAudioRef = useRef(new Audio('/audio/interaccion/outOption/outOption.ogg'));
 
     useEffect(() => {
         hoverAudioRef.current.volume = volume * 0.5;

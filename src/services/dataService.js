@@ -10,7 +10,6 @@ const mockData = {
             especialidad: 'FRONTEND & UI/UX', especialidad_en: 'FRONTEND & UI/UX',
             description: 'Desarrollador FULL-STACK, especializado en interfaces dinámicas y experiencias de usuario inmersivas. Especializado en React, HTML, CSS, JavaScript, TypeScript y UI/UX',
             description_en: 'FULL-STACK Developer specializing in dynamic interfaces and immersive user experiences. Proficient in React, HTML, CSS, JavaScript, TypeScript, and UI/UX design.',
-            img: '/image/aboutme/about0.webp'
         }
     ],
 

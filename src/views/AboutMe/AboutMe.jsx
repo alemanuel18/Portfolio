@@ -42,13 +42,7 @@ export default function AboutMe() {
             <CyberSplitPanel
                 leftClipPath="polygon(0 0, 100% 0, 85% 100%, 0 100%)"
                 leftContent={
-                    <div className="profile-placeholder">
-                        <CyberImage
-                            src={data.img}
-                            alt={data.name}
-                            className="profile-image"
-                        />
-                    </div>
+                    <div className="profile-placeholder"></div>
                 }
                 rightContent={
                     <>

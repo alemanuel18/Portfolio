@@ -11,11 +11,11 @@ const PROFILES = {
         staticOnly: false,
     },
     low: {
-        scale: 0.65,
-        fps: 24,
-        panelCols: 2,
+        scale: 0.5,
+        fps: 18,
+        panelCols: 1,
         panelRows: 1,
-        particles: 8,
+        particles: 4,
         staticOnly: false,
     },
     static: {
@@ -36,11 +36,13 @@ function resolveProfile(mode) {
     if (reducedMotion) return PROFILES.static;
 
     const coarsePointer = window.matchMedia('(pointer: coarse)').matches;
-    const compactViewport = Math.min(window.innerWidth, window.innerHeight) < 760;
-    const lowMemory = navigator.deviceMemory && navigator.deviceMemory <= 4;
-    const lowCpu = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+    const compactViewport = Math.min(window.innerWidth, window.innerHeight) < 820;
+    const cores = navigator.hardwareConcurrency || 4;
+    const memory = navigator.deviceMemory;
+    const mediumCpu = cores <= 8;
+    const mediumMemory = typeof memory === 'number' && memory < 8;
 
-    if (coarsePointer || compactViewport || lowMemory || lowCpu) {
+    if (coarsePointer || compactViewport || mediumCpu || mediumMemory) {
         return PROFILES.low;
     }
 

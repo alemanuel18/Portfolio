@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useCyberSound } from '../../hooks/useCyberSound';
-import { useCyber } from '../../context/CyberContext';
+import { useCyber } from '../../hooks/useCyber';
 import './BackButton.css';
 
 export default function BackButton({ onClick }) {

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useCyber } from '../../context/CyberContext';
+import { useCyber } from '../../hooks/useCyber';
 
 const PROFILES = {
     high: {

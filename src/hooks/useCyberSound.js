@@ -1,5 +1,5 @@
-import { useRef, useEffect } from 'react';
-import { useCyber } from '../context/CyberContext';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCyber } from './useCyber';
 
 export function useCyberSound() {
     const { volume } = useCyber();
@@ -18,18 +18,24 @@ export function useCyberSound() {
         outOptionAudioRef.current.volume = volume;
     }, [volume]);
 
-    const playSound = (audioRef) => {
+    const playSound = useCallback((audioRef) => {
         if (audioRef && audioRef.current) {
             audioRef.current.currentTime = 0;
             audioRef.current.play().catch(() => { });
         }
-    };
+    }, []);
 
-    return {
-        playHover: () => playSound(hoverAudioRef),
-        playInOption: () => playSound(inOptionAudioRef),
-        playNavigare: () => playSound(navigareAudioRef),
-        playOpenPortfolio: () => playSound(openPortfolioAudioRef),
-        playOutOption: () => playSound(outOptionAudioRef),
-    };
+    const playHover = useCallback(() => playSound(hoverAudioRef), [playSound]);
+    const playInOption = useCallback(() => playSound(inOptionAudioRef), [playSound]);
+    const playNavigare = useCallback(() => playSound(navigareAudioRef), [playSound]);
+    const playOpenPortfolio = useCallback(() => playSound(openPortfolioAudioRef), [playSound]);
+    const playOutOption = useCallback(() => playSound(outOptionAudioRef), [playSound]);
+
+    return useMemo(() => ({
+        playHover,
+        playInOption,
+        playNavigare,
+        playOpenPortfolio,
+        playOutOption,
+    }), [playHover, playInOption, playNavigare, playOpenPortfolio, playOutOption]);
 }

@@ -8,7 +8,7 @@ import {
 } from 'react-icons/si';
 import './TechCarousel.css';
 
-export const TECH_ICONS = {
+const TECH_ICONS = {
     'React': SiReact, 'React (Vite)': SiReact, 'Next.js': SiNextdotjs,
     'TypeScript': SiTypescript, 'JavaScript': SiJavascript,
     'HTML': SiHtml5, 'CSS': SiCss,
@@ -31,30 +31,23 @@ const SLIDE = {
  * @param {number|null} focusedIndex - Índice a mostrar (override externo)
  */
 export default function TechCarousel({ items = [], interval = 2200, focusedIndex = null }) {
-    const [current, setCurrent] = useState(0);
-    const [paused, setPaused] = useState(false);
-
-    // Sincronizar con el ítem expandido en el panel derecho
-    useEffect(() => {
-        if (focusedIndex !== null && focusedIndex >= 0 && focusedIndex < items.length) {
-            setCurrent(focusedIndex);
-            setPaused(true);
-        } else {
-            setPaused(false);
-        }
-    }, [focusedIndex, items.length]);
+    const [autoCurrent, setAutoCurrent] = useState(0);
+    const focused = focusedIndex !== null && focusedIndex >= 0 && focusedIndex < items.length
+        ? focusedIndex
+        : null;
 
     // Auto-rotación — se pausa cuando hay un ítem enfocado
     useEffect(() => {
-        if (paused || items.length === 0) return;
+        if (focused !== null || items.length === 0) return;
         const timer = setInterval(() => {
-            setCurrent(prev => (prev + 1) % items.length);
+            setAutoCurrent(prev => (prev + 1) % items.length);
         }, interval);
         return () => clearInterval(timer);
-    }, [paused, items.length, interval]);
+    }, [focused, items.length, interval]);
 
     if (items.length === 0) return null;
 
+    const current = focused ?? autoCurrent % items.length;
     const tech = items[current];
     const Icon = TECH_ICONS[tech.name] || SiReact;
 

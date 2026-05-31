@@ -6,7 +6,7 @@ import MagazineLayout from '../../components/MagazineLayout/MagazineLayout';
 import { FaGithub } from 'react-icons/fa';
 import CyberImage from '../../components/CyberImage/CyberImage';
 import CyberButton from '../../components/CyberButton/CyberButton';
-import { useCyber } from '../../context/CyberContext';
+import { useCyber } from '../../hooks/useCyber';
 import { useTranslate } from '../../hooks/useTranslate';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Projects.css';
@@ -25,7 +25,7 @@ export default function Projects() {
             setData(res);
             setLoading(false);
         });
-    }, []);
+    }, [fetchCyberData, playNavigare]);
 
     if (loading) return <LoadingScreen />;
 

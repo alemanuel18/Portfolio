@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCyberSound } from '../../hooks/useCyberSound';
-import { useCyber } from '../../context/CyberContext';
+import { useCyber } from '../../hooks/useCyber';
 import './MagazineLayout.css';
 
 /**

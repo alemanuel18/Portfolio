@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { useCyber } from '../../context/CyberContext';
+import { useCyber } from '../../hooks/useCyber';
 import CyberButton from '../../components/CyberButton/CyberButton';
 import './MainMenu.css';
 

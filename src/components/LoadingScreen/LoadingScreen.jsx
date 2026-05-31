@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useCyber } from '../../context/CyberContext';
+import { useCyber } from '../../hooks/useCyber';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './LoadingScreen.css';
 
@@ -10,7 +10,7 @@ export default function LoadingScreen() {
 
     useEffect(() => {
         playNavigare();
-    }, []);
+    }, [playNavigare]);
 
     return (
         <motion.div

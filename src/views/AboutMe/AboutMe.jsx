@@ -6,8 +6,7 @@ import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import CyberButton from '../../components/CyberButton/CyberButton';
 import CyberSplitPanel from '../../components/CyberSplitPanel/CyberSplitPanel';
-import CyberImage from '../../components/CyberImage/CyberImage';
-import { useCyber } from '../../context/CyberContext';
+import { useCyber } from '../../hooks/useCyber';
 import { useTranslate } from '../../hooks/useTranslate';
 import './AboutMe.css';
 
@@ -22,7 +21,7 @@ export default function AboutMe() {
             setData(res[0]);
             setLoading(false);
         });
-    }, []);
+    }, [fetchCyberData]);
 
     const contacts = [
         { label: 'LinkedIn', icon: <FaLinkedin size={20} />, href: 'http://www.linkedin.com/in/alejandro-jerez-' },

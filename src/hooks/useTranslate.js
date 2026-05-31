@@ -1,4 +1,4 @@
-import { useCyber } from '../context/CyberContext';
+import { useCyber } from './useCyber';
 
 /**
  * Devuelve el valor de un campo en el idioma activo.

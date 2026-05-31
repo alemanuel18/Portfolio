@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import CyberTimeline from '../../components/CyberTimeline/CyberTimeline';
-import { useCyber } from '../../context/CyberContext';
+import { useCyber } from '../../hooks/useCyber';
 import { useTranslate } from '../../hooks/useTranslate';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Experience.css';
@@ -21,7 +21,7 @@ export default function Experience() {
             setData(res);
             setLoading(false);
         });
-    }, []);
+    }, [fetchCyberData, playNavigare]);
 
     if (loading) return <LoadingScreen />;
 

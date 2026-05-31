@@ -4,7 +4,7 @@ import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import MagazineLayout from '../../components/MagazineLayout/MagazineLayout';
 import CyberButton from '../../components/CyberButton/CyberButton';
-import { useCyber } from '../../context/CyberContext';
+import { useCyber } from '../../hooks/useCyber';
 import { useTranslate } from '../../hooks/useTranslate';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Courses.css';
@@ -23,7 +23,7 @@ export default function Courses() {
             setData(res);
             setLoading(false);
         });
-    }, []);
+    }, [fetchCyberData, playNavigare]);
 
     if (loading) return <LoadingScreen />;
 

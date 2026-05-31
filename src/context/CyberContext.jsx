@@ -1,7 +1,6 @@
-import { createContext, useState, useContext } from 'react';
+import { useState } from 'react';
+import { CyberContext } from './CyberContextValue';
 import { fetchCyberData } from '../services/dataService';
-
-const CyberContext = createContext();
 
 const translations = {
     es: {
@@ -136,5 +135,3 @@ export function CyberProvider({ children }) {
         </CyberContext.Provider>
     );
 }
-
-export const useCyber = () => useContext(CyberContext);

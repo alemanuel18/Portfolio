@@ -4,7 +4,7 @@ import BackButton from '../../components/BackButton/BackButton';
 import LoadingScreen from '../../components/LoadingScreen/LoadingScreen';
 import CyberSplitPanel from '../../components/CyberSplitPanel/CyberSplitPanel';
 import TechCarousel from '../../components/TechCarousel/TechCarousel';
-import { useCyber } from '../../context/CyberContext';
+import { useCyber } from '../../hooks/useCyber';
 import { useTranslate } from '../../hooks/useTranslate';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import './Technologies.css';
@@ -23,7 +23,7 @@ export default function Technologies() {
             setData(res);
             setLoading(false);
         });
-    }, []);
+    }, [fetchCyberData, playNavigare]);
 
     const handleToggle = (id) => {
         playInOption();

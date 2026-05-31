@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import BackButton from '../../components/BackButton/BackButton';
-import { useCyber } from '../../context/CyberContext';
+import { useCyber } from '../../hooks/useCyber';
 import { useCyberSound } from '../../hooks/useCyberSound';
 import CyberButton from '../../components/CyberButton/CyberButton';
 import './Options.css';

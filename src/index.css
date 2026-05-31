@@ -20,7 +20,7 @@
   /* Neutros */
   --cyber-dark:    #1a222d;
   --cyber-white:   #ffffff;
-  --cyber-gray:    #8292a5;
+  --cyber-gray:    #4f647a;
   --cyber-bg:      #eef5fb;
 
   /* Bordes */
@@ -41,7 +41,7 @@
   --cyber-shadow-xl:  0 20px 40px rgba(0, 136, 204, 0.30);
 
   /* Texto */
-  --cyber-text-light:    rgba(255, 255, 255, 0.60);
+  --cyber-text-light:    rgba(28, 42, 58, 0.74);
   --cyber-text-btn-off:  rgba(30, 50, 75, 0.80);
   --cyber-text-btn-on:   rgba(220, 240, 255, 0.97);
 

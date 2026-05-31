@@ -39,7 +39,7 @@ const mockData = {
             desc: 'Portafolio personal, enfocado en las tecnologías utilizadas en la carrera de Ingeniería en Ciencias de la Computación y TI.',
             desc_en: 'Personal portfolio with a Detroit: Become Human aesthetic, showcasing my projects and skills as a CS student.',
             repo: 'https://github.com/alemanuel18/Portfolio',
-            demo: 'https://swap.jhgo.online/es/login'
+            demo: 'https://portfolio-six-khaki-62.vercel.app/'
         },
         {
             id: 4,

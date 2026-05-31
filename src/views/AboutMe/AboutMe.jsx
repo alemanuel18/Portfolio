@@ -25,7 +25,7 @@ export default function AboutMe() {
     }, []);
 
     const contacts = [
-        { label: 'LinkedIn', icon: <FaLinkedin size={20} />, href: 'https://www.linkedin.com/in/alejandro-manuel-jerez-melgar-735836289/' },
+        { label: 'LinkedIn', icon: <FaLinkedin size={20} />, href: 'http://www.linkedin.com/in/alejandro-jerez-' },
         { label: 'Gmail',    icon: <SiGmail    size={20} />, href: 'mailto:alemanuelj5@gmail.com?subject=Contacto desde portfolio&body=Hola Alejandro,' },
         { label: 'GitHub',   icon: <FaGithub   size={20} />, href: 'https://github.com/alemanuel18' }
     ];

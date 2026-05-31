@@ -50,15 +50,30 @@
 }
 
 .about-contacts {
-  display: flex;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 22px);
   margin-bottom: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+  padding: 8px 10px;
+  overflow: visible;
 }
 
 .about-contacts .cyber-button {
-  width: clamp(76px, 7vw, 92px);
+  width: 100%;
+  min-width: 0;
+  height: clamp(44px, 5vh, 48px);
+}
+
+.about-contacts .cyber-button__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0;
+}
+
+.about-contacts .cyber-button__label svg {
+  width: 20px;
+  height: 20px;
 }
 
 .about-bio {
@@ -75,5 +90,10 @@
 
   .about-meta span {
     gap: 18px;
+  }
+
+  .about-contacts {
+    gap: 14px;
+    padding-inline: 8px;
   }
 }
